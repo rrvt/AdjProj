@@ -19,9 +19,13 @@ The ...msi file will install the application.
 
 Copy an vcxproj file into the data directory and practice with it.
 
+## Update 5/1/2020
+
+Added logic so that between Open/Adjust/Save the data structures are cleared.  Fixec Resource adjustment.
+
 ## Authors
 
-Bob -- K6RWY
+Bob -- K6RWY, rrvt@swde.com
 
 ## License
 

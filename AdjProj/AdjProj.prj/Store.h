@@ -22,13 +22,17 @@ XMLType xmlType;
 String  sortName;
 
   XMLbase() : xmlType(XMLnil) { }
-  XMLbase(XMLbase& x) : xmlType(x.xmlType) { }
+  XMLbase(XMLbase& x) : xmlType(x.xmlType), sortName(x.sortName) { }
+
+  XMLbase& operator= (XMLbase& x) {xmlType = x.xmlType; sortName = x.sortName;}
 
   bool getFileName(String& line);
 
   bool operator== (XMLbase& x) {return _tcsicmp(sortName, x.sortName) == 0;}
   bool operator>  (XMLbase& x) {return _tcsicmp(sortName, x.sortName) >  0;}
   bool operator<= (XMLbase& x) {return _tcsicmp(sortName, x.sortName) <= 0;}
+
+//  void examine(XMLbase& x, TCchar* where);
   };
 
 
@@ -39,18 +43,23 @@ XMLbase* p;
  ~XMLbasePtr() { }
   XMLbasePtr(XMLbasePtr& x) {p = x.p;}
 
+  void        clear();
+
   bool        operator== (XMLbasePtr& x) {return *p == *x.p;}
   bool        operator>  (XMLbasePtr& x) {return *p >  *x.p;}
   bool        operator<= (XMLbasePtr& x) {return *p <= *x.p;}
   XMLbasePtr& operator=  (XMLbasePtr& x) {p = x.p; return *this;}
   };
 
+
 struct Attrib : public XMLbase {
 String line;
 
   Attrib()          : XMLbase() { }
-  Attrib(Attrib& a) : XMLbase(a) {line = a.line;}
- ~Attrib() { }
+  Attrib(Attrib& a) : XMLbase(a) {line = a.line; xmlType  = a.xmlType;   sortName = a.sortName;}
+ ~Attrib() {clear();}
+
+  void   clear() {line.clear();}
 
   bool   find(TCchar* s) {return line.find(s) >= 0;}
 
@@ -59,35 +68,36 @@ String line;
   void   display()           {notePad << line << nCrlf;}
   void   output(Archive& ar) {ar.write(line); ar.crlf();}
 
-  Attrib& operator= (Attrib& a) {xmlType = a.xmlType; line = a.line; return *this;}
+  Attrib& operator= (Attrib& a)
+                            {line = a.line; xmlType  = a.xmlType;   sortName = a.sortName; return *this;}
   };
 
 
 class Element : public XMLbase {
 Element* upLink;
 
-int      curX;
 int      loopX;
 
 public:
 
-String name;
-String startTag;                                  // BeginTag ("<tagName>") of element
+String   name;
+String   startTag;                                // BeginTag ("<tagName>") of element
+String   endTag;                                  // EndTag ("</tagName>") of element
 
-Expandable<XMLbasePtr, 8> items;                    // A list of elements (BeginTag ... EndTag
+Expandable<XMLbasePtr, 2> items;                  // A list of elements (BeginTag ... EndTag
 
-String endTag;                                    // EndTag ("</tagName>") of element
-
-  Element() : XMLbase(), upLink(0), curX(0), loopX(0) { }
+  Element() : XMLbase(), upLink(0), loopX(0) { }
   Element(Element& d) {*this = d;}
- ~Element() { }
+ ~Element() {clear();}
+
+  void     clear();
 
   void     addAttrib(String& s)
-             {Attrib* p = new Attrib; items[curX++].p = p;  p->xmlType = XMLAttrib; p->line = s;}
+                {Attrib* p = new Attrib; items[items.end()].p = p;  p->xmlType = XMLAttrib; p->line = s;}
 
   Element* addElement() {
-             Element* p = new Element; items[curX++].p = p; p->xmlType = ElementTag; p->upLink = this;
-             return p;
+             Element* p = new Element; items[items.end()].p = p; p->xmlType = ElementTag;
+             p->upLink = this;   return p;
              }
 
   Element* parent() {return upLink;}
@@ -96,7 +106,8 @@ String endTag;                                    // EndTag ("</tagName>") of el
   void     setSortNames();
   bool     getFileName() {return XMLbase::getFileName(startTag);}
   void     sort();
-  void     swap(Element* p, Element* q);
+  void     reorder(Element* first, Element* second, Element* third);
+  Element* getElement(int i);
 
   void     display();
   void     output(Archive& ar);
@@ -106,9 +117,13 @@ String endTag;                                    // EndTag ("</tagName>") of el
   XMLbase* startLoop() {loopX = -1; return nextItem();}
   XMLbase* nextItem()  {return ++loopX < items.end() ? items[loopX].p : 0;}
 
-private:
+#if 0
+  void     examine(TCchar* where);
+  void     isSixteen();
+  int      isTarget();
+#endif
 
-  int      findX(Element* p);
+private:
   };
 
 
@@ -125,7 +140,12 @@ String xmlVersion;
   void     addAttrib(Element* e, String& s)  {return e ? e->addAttrib(s) : top.addAttrib(s);}
   Element* addElement(Element* e)            {return e ? e->addElement() : top.addElement();}
 
+  void     clear() {top.clear();}
+
   Element* find(TCchar* s)     {return top.find(s);}
+
+  void     reorder(Element* first, Element* second, Element* third);
+
 
   void     display()           {top.display();}
 

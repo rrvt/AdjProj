@@ -47,20 +47,24 @@ Element* p;
 Element* res;
 Element* non;
 Element* img;
-Element* parent;
-bool     seenRes;
-bool     seenNon;
-bool     seenImg;
-
 
   p   = store.find(_T("ClInclude"));      if (p)   {  p->setSortNames();   p->sort();}
   p   = store.find(_T("ClCompile"));      if (p)   {  p->setSortNames();   p->sort();}
   non = store.find(_T("None Include"));   if (non) {non->setSortNames(); non->sort();}
   img = store.find(_T("Image Include"));  if (img) {img->setSortNames(); img->sort();}
-  res = store.find(_T("ResourceCompile"));
+  res = store.find(_T("ResourceCompile Include"));
 
   if (res && (non || img)) {
-    parent = res->parent();    seenRes = seenNon = seenImg = false;
+
+    store.reorder(res, non, img);
+
+
+#if 0
+    Element* parent;
+    //    parent = res->parent();
+    bool     seenRes;
+    bool     seenNon;
+    bool     seenImg;
 
     for (p = (Element*) parent->startLoop(); p; p = (Element*) parent->nextItem()) {
       if (p == res) seenRes = true;
@@ -72,6 +76,7 @@ bool     seenImg;
       }
 
     if (seenImg && img && non) parent->swap(img, non);
+#endif
     }
 
   display();
@@ -101,6 +106,8 @@ int i;
 
 void AdjProjDoc::OnFileOpen() {
 String path;
+
+  store.clear();
 
   saveAsTitle = _T("Adjust Project");   defExt = _T("vcxproj");   defFilePat = _T("*.vcxproj");
 

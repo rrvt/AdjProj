@@ -6,13 +6,40 @@
 #include "qsort.h"
 
 
-Store store;                                          // The place where the file is stored
+Store store;                    // The place where the file is stored
+
+
+void XMLbasePtr::clear() {
+  if (!p) return;
+
+  switch(p->xmlType) {
+    case ElementTag : {Element* q = (Element*) p;  delete q;} break;
+    case XMLAttrib  : {Attrib*  q = (Attrib*)  p;  delete q;} break;
+    }
+
+  p = 0;
+  }
+
+
+void Element::clear() {
+int n = items.end();
+int i;
+
+  for (i = 0; i < n; i++) {
+    items[i].clear();
+    }
+  items.clr(); loopX = 0;  name.clear(); startTag.clear(); endTag.clear();
+  }
 
 
 Element& Element::operator= (Element& e) {
-  name = e.name; xmlType = e.xmlType;
+int n = items.end();
 
-  for (int i = 0; i < items.end(); i++) items[i] = e.items[i];
+  xmlType  = e.xmlType;   sortName = e.sortName;   name     = e.name;
+  upLink   = e.upLink;    loopX    = e.loopX;      startTag = e.startTag;
+  endTag   = e.endTag;
+
+  for (int i = 0; i < n; i++) items[i] = e.items[i];
 
   return *this;
   }
@@ -31,7 +58,10 @@ Element* elem;
 
     switch (p->xmlType) {
       case XMLAttrib  : at = (Attrib*)  p; if (at->find(s)) return this; break;
-      case ElementTag : el = (Element*) p; elem = el->find(s);  if (elem) return elem;
+      case ElementTag : el = (Element*) p;
+                        if (el->startTag.find(s) >= 0) return this;
+                        elem = el->find(s);  if (elem) return elem;
+                        break;
       }
     }
 
@@ -39,21 +69,59 @@ Element* elem;
   }
 
 
-void Element::sort() {
+void Element::sort() {int n = items.end();   qsort(&items[0], &items[n-1]);}
+
+
+void Store::reorder(Element* first, Element* second, Element* third) {
+int n = top.items.end();
+int i;
+
+  for (i = 0; i < n; i++) {
+    Element* proj = top.getElement(i);
+
+    if (proj && proj->startTag.find(_T("<Project")) >= 0) {
+      proj->reorder(first, second, third);  break;
+      }
+    }
+  }
+
+
+void Element::reorder(Element* first, Element* second, Element* third) {
 int n = items.end();
+int i;
 
-  qsort(&items[0], &items[n-1]);
+  for (i = 0; i < n; i++) {
+    Element* p = getElement(i);   if (!p) continue;
+    if (p == first)
+      break;
+    if (p == second || p == third)
+      {items[i].p = first; break;}
+    }
+  for (i++; i < n; i++) {
+    Element* p = getElement(i);   if (!p) continue;
+    if (p == second)
+      break;
+    if (p == first || p == third)
+      {items[i].p = second; break;}
+    }
+  for (i++; i < n; i++) {
+    Element* p = getElement(i);   if (!p) continue;
+    if (p == third)
+      break;
+    if (p == first || p == second)
+      {items[i].p = third; break;}
+    }
   }
 
 
-void Element::swap(Element* p, Element* q) {
-int x = findX(p);  if (x < 0) return;
-int y = findX(q);  if (y < 0) return;
+Element* Element::getElement(int i) {
+XMLbase* p = items[i].p;
 
-  items[x].p = q; items[y].p = p;
+  return p && p->xmlType == ElementTag ? (Element*) p : 0;
   }
 
 
+#if 0
 int Element::findX(Element* p) {
 int n = items.end();
 int i;
@@ -62,7 +130,7 @@ int i;
 
   return -1;
   }
-
+#endif
 
 
 void Element::display() {
@@ -123,6 +191,8 @@ Attrib*  at;
   }
 
 
+
+
 bool XMLbase::getFileName(String& line) {
 int    begPos;
 int    endPos;
@@ -135,6 +205,98 @@ int x = line.length();
 
   if (begPos < 0 || endPos <= begPos) return false;
 
-  sortName = line.substr(begPos, endPos-begPos);  return true;
+  sortName = line.substr(begPos, endPos-begPos);   return true;
   }
+
+
+#if 0
+static int     myCount = 0;
+
+void XMLbase::examine(XMLbase& x, TCchar* where) {
+
+
+  if (special) {
+    int rslt = special->isTarget();
+    if (rslt >= 0) {
+      if (!rslt && myCount) {
+        int zz = 1;
+        }
+      }
+    }
+
+  if (sortName == target) {
+    int y = 1;
+    }
+  if (x.sortName == target) {
+    int z = 1;
+    }
+  }
+
+
+static RegExpr rf(_T("ClCompile"));
+
+
+int Element::isTarget() {
+int n = items.end();
+int i;
+int found = 0;
+
+  for (i = 0; i < n; i++) {
+    XMLbase* p = items[i].p;
+
+    if (p->xmlType == XMLAttrib) {
+      Attrib* attr = (Attrib*) p;
+
+      if (!rf.match(attr->line)) return -1;
+      }
+
+    if (p && p->sortName == target) {myCount++; found = 1; break;}
+    }
+
+  return found;
+  }
+#endif
+
+
+
+#if 0
+static TCchar* target = _T("MikroTikFileNameDlg.cpp");
+
+void Element::isSixteen() {
+int n = items.end();
+
+if (n == 16) {
+int x = 1;
+}
+}
+
+
+
+void Element::examine(TCchar* where) {
+int n = items.end();
+int i;
+
+  if (n >= 16) {
+    int x = 0;
+
+    for (i = 0; i < n; i++) {
+      XMLbasePtr& baseP = items[i];
+      XMLbase*    p     = baseP.p;
+      if (p && p->xmlType == XMLAttrib) {
+        Attrib& attr = *(Attrib*) p;
+        RegExpr re(target);
+
+        if (re.match(attr.line)) {
+          if (!p->sortName.isEmpty()) {
+            if (p->sortName == target) {
+              int y = 1;
+              }
+            }
+          int x = 1;
+          }
+        }
+      }
+    }
+  }
+#endif
 
