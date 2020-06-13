@@ -13,8 +13,8 @@ void XMLbasePtr::clear() {
   if (!p) return;
 
   switch(p->xmlType) {
-    case ElementTag : {Element* q = (Element*) p;  delete q;} break;
-    case XMLAttrib  : {Attrib*  q = (Attrib*)  p;  delete q;} break;
+    case ElementTag : {NewAlloc(Element); Element* q = (Element*) p;  FreeNode(q);} break;
+    case XMLAttrib  : {NewAlloc(Attrib);  Attrib*  q = (Attrib*)  p;  FreeNode(q);} break;
     }
 
   p = 0;

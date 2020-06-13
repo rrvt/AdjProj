@@ -92,11 +92,14 @@ Expandable<XMLbasePtr, 2> items;                  // A list of elements (BeginTa
 
   void     clear();
 
-  void     addAttrib(String& s)
-                {Attrib* p = new Attrib; items[items.end()].p = p;  p->xmlType = XMLAttrib; p->line = s;}
+  void     addAttrib(String& s) {
+    NewAlloc(Attrib);  Attrib* p = AllocNode;
+    items[items.end()].p = p;  p->xmlType = XMLAttrib; p->line = s;
+    }
 
   Element* addElement() {
-             Element* p = new Element; items[items.end()].p = p; p->xmlType = ElementTag;
+             NewAlloc(Element);
+             Element* p = AllocNode; items[items.end()].p = p; p->xmlType = ElementTag;
              p->upLink = this;   return p;
              }
 

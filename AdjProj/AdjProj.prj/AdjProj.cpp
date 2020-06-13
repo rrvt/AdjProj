@@ -10,10 +10,6 @@
 #include "AdjProjDoc.h"
 #include "AdjProjView.h"
 
-#ifdef _DEBUG
-#define new DEBUG_NEW
-#endif
-
 
 AdjProj theApp;                       // The one and only AdjProj object
 IniFile iniFile;
@@ -46,7 +42,7 @@ BOOL AdjProj::InitInstance() {
 
   iniFile.setAppDataPath(m_pszHelpFilePath, *this);
 
-  notePad.open();
+  notePad.clear();
 
   SetRegistryKey(appID);
 
