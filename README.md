@@ -25,7 +25,7 @@ Added logic so that between Open/Adjust/Save the data structures are cleared.  F
 
 ## Authors
 
-Bob -- K6RWY, rrvt@swde.com
+Bob -- K6RWY, romeo romeo victor tango alpha tango sam whisky delta echo dot charlie oscar mike
 
 ## License
 
