@@ -25,7 +25,7 @@ END_MESSAGE_MAP()
 
 // AdjProj construction
 
-AdjProj::AdjProj() noexcept : doc(0), view(0) {
+AdjProj::AdjProj() noexcept {
 ResourceData res;
 
   res.getVersion(version);
@@ -72,10 +72,9 @@ BOOL AdjProj::InitInstance() {
 
   if (!ProcessShellCommand(cmdInfo)) return FALSE;
 
-  if (getView()) {view->setAuthor(_T("Adjust Project")); view->setFont(_T("Courier New"));}
+  setAppName(_T("AdjProj"));  setTitle(_T("Adjust Project Files"));
 
-  setAppName(_T("Adjust Project"));                           // Title left part
-  setTitle(_T("Adjust Project Files"));      // Title right part
+  view()->setFont(_T("Courier New"), 120);
 
   // The one and only window has been initialized, so show and update it
 
@@ -83,6 +82,7 @@ BOOL AdjProj::InitInstance() {
   }
 
 
+#if 0
 void AdjProj::invalidate() {if (getView()) view->Invalidate();}
 
 
@@ -111,6 +111,7 @@ AdjProjDoc* AdjProj::getDocument() {
 
   return doc = (AdjProjDoc*) t->GetNextDoc(pos);
   }
+#endif
 
 
 void AdjProj::OnAppAbout() {CAboutDlg aboutDlg; aboutDlg.DoModal();}

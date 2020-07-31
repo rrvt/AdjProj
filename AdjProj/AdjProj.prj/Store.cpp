@@ -176,13 +176,14 @@ int i;
 
 
 void Element::setSortNames() {
+ElIter   iter(*this);
 XMLbase* base;
 Element* el;
 Attrib*  at;
 
   if (name != _T("ItemGroup")) return;
 
-  for (base = startLoop(); base; base = nextItem()) {
+  for (base = iter(); base; base = iter++) {
     switch (base->xmlType) {
       case XMLAttrib  : at = (Attrib*)  base; at->getFileName(); break;
       case ElementTag : el = (Element*) base; el->getFileName(); break;

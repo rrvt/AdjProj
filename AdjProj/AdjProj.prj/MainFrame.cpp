@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include "MainFrame.h"
-#include "AdjProj.h"
+#include "Resource.h"
 
 
 // MainFrame
@@ -60,15 +60,6 @@ BOOL MainFrame::PreCreateWindow(CREATESTRUCT& cs) {
   cs.style &= ~FWS_ADDTOTITLE;  cs.lpszName = _T("Adjust Project");         // Sets the default title left part
 
   return CFrameWndEx::PreCreateWindow(cs);
-  }
-
-
-void MainFrame::setTitle(TCchar* rightPart) {
-String s = m_strTitle;
-
-  if (rightPart && *rightPart) {s += _T(" -- "); s += rightPart;}
-
-  SetWindowText(s);
   }
 
 

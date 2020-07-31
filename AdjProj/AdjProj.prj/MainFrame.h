@@ -2,9 +2,10 @@
 
 
 #pragma once
+#include "CMainFrm.h"
 
 
-class MainFrame : public CFrameWndEx {
+class MainFrame : public CMainFrm {
 
 CMFCMenuBar   m_wndMenuBar;
 CMFCToolBar   m_wndToolBar;
@@ -20,9 +21,6 @@ protected:                                          // create from serialization
 public:                                             // Overrides
 
   virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
-
-          void setAppName(TCchar* name) {m_strTitle = name;}
-          void setTitle(TCchar* leftPart);
 
   virtual ~MainFrame();
 

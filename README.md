@@ -19,7 +19,14 @@ The ...msi file will install the application.
 
 Copy an vcxproj file into the data directory and practice with it.
 
-## Update 5/1/2020
+## Updates
+### Update 7/30/20
+
+Changed allmost all the startLoop, nextItem loops to iter(), iter++ loops.  The advantage is that there
+can be many iterators in the same function for the same data (they are just named differently, eg. iter1,
+inter2, etc.).
+
+### Update 5/1/2020
 
 Added logic so that between Open/Adjust/Save the data structures are cleared.  Fixec Resource adjustment.
 

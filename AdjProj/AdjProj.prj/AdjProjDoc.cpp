@@ -10,6 +10,7 @@
 #include "GetPathDlg.h"
 #include "MessageBox.h"
 #include "NotePad.h"
+#include "Resource.h"
 #include "Store.h"
 
 
@@ -123,23 +124,4 @@ void AdjProjDoc::Dump(CDumpContext& dc) const
 }
 #endif //_DEBUG
 
-
-#if 0
-    Element* parent;
-    //    parent = res->parent();
-    bool     seenRes;
-    bool     seenNon;
-    bool     seenImg;
-
-    for (p = (Element*) parent->startLoop(); p; p = (Element*) parent->nextItem()) {
-      if (p == res) seenRes = true;
-      if (p == non) seenNon = true;
-      if (p == img) seenImg = true;
-
-      if (seenNon && !seenRes) {parent->swap(res, non); break;}
-      if (seenImg && !seenRes) {parent->swap(res, img); break;}
-      }
-
-    if (seenImg && img && non) parent->swap(img, non);
-#endif
 

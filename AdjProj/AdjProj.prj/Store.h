@@ -4,6 +4,7 @@
 #pragma once
 #include "Archive.h"
 #include "Expandable.h"
+#include "IterT.h"
 #include "NotePad.h"
 
 
@@ -73,6 +74,10 @@ String line;
   };
 
 
+class Element;
+typedef IterT<Element, XMLbase> ElIter;
+
+
 class Element : public XMLbase {
 Element* upLink;
 
@@ -117,16 +122,15 @@ Expandable<XMLbasePtr, 2> items;                  // A list of elements (BeginTa
 
   Element& operator= (Element& d);
 
-  XMLbase* startLoop() {loopX = -1; return nextItem();}
-  XMLbase* nextItem()  {return ++loopX < items.end() ? items[loopX].p : 0;}
-
-#if 0
-  void     examine(TCchar* where);
-  void     isSixteen();
-  int      isTarget();
-#endif
-
 private:
+
+  // returns either a pointer to data (or datum) at index i in array or zero
+  XMLbase* datum(int i) {return 0 <= i && i < nData() ? items[i].p : 0;}
+
+  // returns number of data items in array
+  int   nData()      {return items.end();}
+
+  friend typename ElIter;
   };
 
 
