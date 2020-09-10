@@ -9,28 +9,6 @@
 Store store;                    // The place where the file is stored
 
 
-void XMLbasePtr::clear() {
-  if (!p) return;
-
-  switch(p->xmlType) {
-    case ElementTag : {NewAlloc(Element); Element* q = (Element*) p;  FreeNode(q);} break;
-    case XMLAttrib  : {NewAlloc(Attrib);  Attrib*  q = (Attrib*)  p;  FreeNode(q);} break;
-    }
-
-  p = 0;
-  }
-
-
-void Element::clear() {
-int n = items.end();
-int i;
-
-  for (i = 0; i < n; i++) {
-    items[i].clear();
-    }
-  items.clr(); loopX = 0;  name.clear(); startTag.clear(); endTag.clear();
-  }
-
 
 Element& Element::operator= (Element& e) {
 int n = items.end();
@@ -70,6 +48,32 @@ Element* elem;
 
 
 void Element::sort() {int n = items.end();   qsort(&items[0], &items[n-1]);}
+
+
+void Element::clear() {
+int       n = items.end();
+int       i;
+XMLbaseP* rcdP;
+
+  for (i = 0; i < n; i++) {rcdP = items.getRcdPtr(i);   if (rcdP) rcdP->clear();}
+
+  upLink = 0; loopX = 0; name.clear(); startTag.clear(); endTag.clear();
+  }
+
+
+// The free node included in the template doesn't work for multiple node sizes.  Leaves lost memory, UGH!
+
+void XMLbaseP::clear() {
+
+  if (!p) return;
+
+  switch(p->xmlType) {
+    case ElementTag : {NewAlloc(Element); Element* q = (Element*) p;  FreeNode(q);} break;
+    case XMLAttrib  : {NewAlloc(Attrib);  Attrib*  q = (Attrib*)  p;  FreeNode(q);} break;
+    }
+
+  p = 0;
+  }
 
 
 void Store::reorder(Element* first, Element* second, Element* third) {
@@ -119,18 +123,6 @@ XMLbase* p = items[i].p;
 
   return p && p->xmlType == ElementTag ? (Element*) p : 0;
   }
-
-
-#if 0
-int Element::findX(Element* p) {
-int n = items.end();
-int i;
-
-  for (i = 0; i < n; i++) if (items[i].p == p) return i;
-
-  return -1;
-  }
-#endif
 
 
 void Element::display() {
@@ -200,8 +192,8 @@ int    endPos;
 
 int x = line.length();
 
-  endPos = line.findLast(_T('"'));
-  begPos = line.findLast(_T('\\'), endPos);   if (begPos < 0) begPos = line.find(_T('"'));
+  endPos = line.findLastOf(_T('"'));
+  begPos = line.findLastOf(_T('\\'), endPos);   if (begPos < 0) begPos = line.find(_T('"'));
   begPos++;
 
   if (begPos < 0 || endPos <= begPos) return false;
@@ -298,6 +290,16 @@ int i;
         }
       }
     }
+  }
+#endif
+#if 0
+int Element::findX(Element* p) {
+int n = items.end();
+int i;
+
+  for (i = 0; i < n; i++) if (items[i].p == p) return i;
+
+  return -1;
   }
 #endif
 

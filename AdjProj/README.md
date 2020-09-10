@@ -20,6 +20,13 @@ The ...msi file will install the application.
 Copy an vcxproj file into the data directory and practice with it.
 
 ## Updates
+### Update 9/10/20
+Library improvement project.  Changed the Expandable Array classes, added templates for a pointer only
+class in the ExpandableP class definition.  It turned out I was defining this RcdPtr class many times
+worrying about exactly how it should be defined.  So I turned it into a template, which of course then
+I needed to go back and add it to all the programs.  Severl iterations later I added some documentation
+and I am uploading the programs today.
+
 ### Update 7/30/20
 
 Changed allmost all the startLoop, nextItem loops to iter(), iter++ loops.  The advantage is that there

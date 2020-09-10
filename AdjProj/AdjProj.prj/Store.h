@@ -3,7 +3,7 @@
 
 #pragma once
 #include "Archive.h"
-#include "Expandable.h"
+#include "ExpandableP.h"
 #include "IterT.h"
 #include "NotePad.h"
 
@@ -25,6 +25,8 @@ String  sortName;
   XMLbase() : xmlType(XMLnil) { }
   XMLbase(XMLbase& x) : xmlType(x.xmlType), sortName(x.sortName) { }
 
+  virtual void clear() {xmlType = XMLnil; sortName.clear();}
+
   XMLbase& operator= (XMLbase& x) {xmlType = x.xmlType; sortName = x.sortName;}
 
   bool getFileName(String& line);
@@ -37,6 +39,7 @@ String  sortName;
   };
 
 
+#if 0
 struct XMLbasePtr {
 XMLbase* p;
 
@@ -51,6 +54,7 @@ XMLbase* p;
   bool        operator<= (XMLbasePtr& x) {return *p <= *x.p;}
   XMLbasePtr& operator=  (XMLbasePtr& x) {p = x.p; return *this;}
   };
+#endif
 
 
 struct Attrib : public XMLbase {
@@ -60,7 +64,7 @@ String line;
   Attrib(Attrib& a) : XMLbase(a) {line = a.line; xmlType  = a.xmlType;   sortName = a.sortName;}
  ~Attrib() {clear();}
 
-  void   clear() {line.clear();}
+  virtual void   clear() {line.clear();}
 
   bool   find(TCchar* s) {return line.find(s) >= 0;}
 
@@ -74,8 +78,20 @@ String line;
   };
 
 
+typedef RcdPtrT<XMLbase> XMLbasePB;
+
+
+class XMLbaseP : public XMLbasePB {
+
+public:
+
+  void clear();
+  };
+
+
 class Element;
 typedef IterT<Element, XMLbase> ElIter;
+
 
 
 class Element : public XMLbase {
@@ -89,23 +105,22 @@ String   name;
 String   startTag;                                // BeginTag ("<tagName>") of element
 String   endTag;                                  // EndTag ("</tagName>") of element
 
-Expandable<XMLbasePtr, 2> items;                  // A list of elements (BeginTag ... EndTag
+ExpandableP<XMLbase, XMLbaseP, 2> items;        // A list of elements (BeginTag ... EndTag
 
   Element() : XMLbase(), upLink(0), loopX(0) { }
   Element(Element& d) {*this = d;}
- ~Element() {clear();}
+ ~Element() {clear();}                                  //clear();
 
   void     clear();
 
   void     addAttrib(String& s) {
-    NewAlloc(Attrib);  Attrib* p = AllocNode;
-    items[items.end()].p = p;  p->xmlType = XMLAttrib; p->line = s;
-    }
+             NewAlloc(Attrib);  Attrib* p = AllocNode;
+             p->xmlType = XMLAttrib;  p->line = s;  items += p;
+             }
 
   Element* addElement() {
-             NewAlloc(Element);
-             Element* p = AllocNode; items[items.end()].p = p; p->xmlType = ElementTag;
-             p->upLink = this;   return p;
+             NewAlloc(Element);  Element* p = AllocNode;
+             p->xmlType = ElementTag; p->upLink = this; items += p;  return p;
              }
 
   Element* parent() {return upLink;}

@@ -136,7 +136,6 @@
     <None Include="..\..\..\Sources\Library\AboutFiles\About.rc2" />
     <None Include="res\AdjProj.rc2" />
     <None Include="..\README.md" />
-  <None Include="..\Data\ThAddr.vcxproj" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\AdjProj.ico" />
