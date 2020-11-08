@@ -3,6 +3,7 @@
 
 #pragma once
 #include "CScrView.h"
+#include "NoteRpt.h"
 
 
 class AdjProjDoc;
@@ -10,17 +11,26 @@ class AdjProjDoc;
 
 class AdjProjView : public CScrView {
 
+NoteRptB dspNote;
+NoteRptB prtNote;
+
 protected: // create from serialization only
 
-  AdjProjView() noexcept { }
+  AdjProjView() noexcept;
   DECLARE_DYNCREATE(AdjProjView)
 
 public:
 
   virtual ~AdjProjView() { }
 
-  AdjProjDoc* GetDocument() const;
+  virtual void OnPrepareDC(CDC* pDC, CPrintInfo* pInfo = NULL);
+  virtual void onPrepareOutput(bool isNotePad, bool printing);
 
+  virtual void OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo);
+  virtual void printFooter(Display& dev, int pageNo);
+  virtual void OnEndPrinting(CDC* pDC, CPrintInfo* pInfo);
+
+  AdjProjDoc* GetDocument() const;
 
 public:
 
@@ -30,7 +40,11 @@ public:
 #endif
 
 public:
+
   DECLARE_MESSAGE_MAP()
+
+  afx_msg void OnSetFocus(CWnd* pOldWnd);
+
   };
 
 #ifndef _DEBUG  // debug version in AdjProjView.cpp

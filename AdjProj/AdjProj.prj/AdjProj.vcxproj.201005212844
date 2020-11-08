@@ -133,15 +133,14 @@
     <ResourceCompile Include="AdjProj.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\AdjProj.ico" />
-    <Image Include="res\Toolbar00.bmp" />
-    <Image Include="res\Toolbar02.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\..\..\Sources\Library\AboutFiles\About.rc2" />
     <None Include="res\AdjProj.rc2" />
     <None Include="..\README.md" />
-  <None Include="..\Data\ThAddr.vcxproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\AdjProj.ico" />
+    <Image Include="res\Toolbar00.bmp" />
+    <Image Include="res\Toolbar02.bmp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Sources\Library\LibUni7\LibUni7.vcxproj">

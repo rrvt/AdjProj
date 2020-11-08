@@ -16,6 +16,46 @@ a zero in the pointer.  In the event that there are a mix of pointers and say St
 allocated content) then the Strings must be allowed to destruct normally and the pointers must just be
 zeroed.
 
+The easiest way to loop through all the elements in the array is to use an iterator.  It IterT.h file
+contains a template for creating an iterator for Expandable files.  First one must declare the Iterator
+class so that an object may be created somewhere that it is going to be used.  The Datum class is a record
+that is stored in an expandable array which is housed in class Xyz
+
+  class Xyz;
+  typedef IterT<Xyz, Datum> DataIter;                        // Iterator for the Xyz
+
+Now that is not all there is to do.  The Xyz class must implement the following:
+
+The template requires two functions be part of Store:
+
+  int   nData()            -- returns number of data items in array
+  Data* datum(int i)       -- returns either a pointer to data (or datum) at index i in array or zero
+  void  removeDatum(int i) -- if i in bounds, removes and deallocates record
+  friend typename DataIter -- required to give access to private area of Xyz.
+
+private:
+
+  // returns either a pointer to data (or datum) at index i in array or zero
+
+  Data* datum(int i) {return 0 <= i && i < nData() ? &data[i] : 0;}
+
+  int   nData()      {return data.end();}                       // returns number of data items in array
+
+  void  removeDatum(int i) {if (0 <= i && i < nData()) data.del(i);}
+
+  friend typename DataIter;
+  };
+
+Once the iterator class is defined then the following is how it would be used:
+
+   DataIter iter(xyz);                          // Where: Xyz xyz;  (i.e. xyz is an object of class Xyz
+   Datum*   data;                               //
+
+     for (data = iter(); data; data = iter++) {
+       <Use data as a pointer to the record, it is guaranteed to be non-zero>
+       }
+
+
 The operations supported by an Expandable array where the declaration is:
 
   Expandable<Datum, 2> data;

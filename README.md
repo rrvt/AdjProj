@@ -20,6 +20,12 @@ The ...msi file will install the application.
 Copy an vcxproj file into the data directory and practice with it.
 
 ## Updates
+
+### Update 11/07/20
+
+Modified the way data is displayed and printed to avoid a conflict between the print thread and the
+display thread.
+
 ### Update 9/10/20
 Library improvement project.  Changed the Expandable Array classes, added templates for a pointer only
 class in the ExpandableP class definition.  It turned out I was defining this RcdPtr class many times

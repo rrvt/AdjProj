@@ -6,14 +6,19 @@
 #include "XMLparser.h"
 
 
+enum DataSource {NoteSource};
+
+
 class AdjProjDoc : public CDoc {
 
-String    saveAsTitle;                                            // Save As Parameters, examples:
-String    defFileName;                                            // _T("mumble.txt")
-String    defExt;                                                 // _T("txt")
-String    defFilePat;                                             // _T("*.txt")
+DataSource  dataSource;
 
-XMLparser xml;
+String      saveAsTitle;                                            // Save As Parameters, examples:
+String      defFileName;                                            // _T("mumble.txt")
+String      defExt;                                                 // _T("txt")
+String      defFilePat;                                             // _T("*.txt")
+
+XMLparser   xml;
 
 protected: // create from serialization only
 
@@ -22,8 +27,11 @@ protected: // create from serialization only
 
 public:
 
-          void setSortName();
-          void display();
+  DataSource dataSrc() {return dataSource;}
+  void       display(DataSource ds);
+
+  void       setSortName();
+  void       display();
 
   virtual void serialize(Archive& ar);
 

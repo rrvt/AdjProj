@@ -1,0 +1,5 @@
+D:\Sources\AdjProj\Release\AdjProjInstaller.msi
+obj\Release\Product.wixobj
+obj\Release\AdjProjInstaller.wixproj.BindContentsFileListnull.txt
+obj\Release\AdjProjInstaller.wixproj.BindOutputsFileListnull.txt
+obj\Release\AdjProjInstaller.wixproj.BindBuiltOutputsFileListnull.txt
