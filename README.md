@@ -21,6 +21,10 @@ Copy an vcxproj file into the data directory and practice with it.
 
 ## Updates
 
+### Update 11/25/20
+
+Library improvement.  Added options for print orientation and margins.
+
 ### Update 11/07/20
 
 Modified the way data is displayed and printed to avoid a conflict between the print thread and the

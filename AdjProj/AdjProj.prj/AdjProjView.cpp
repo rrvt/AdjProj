@@ -5,6 +5,7 @@
 #include "AdjProjView.h"
 #include "AdjProj.h"
 #include "AdjProjDoc.h"
+#include "Options.h"
 #include "Resources.h"
 
 
@@ -26,11 +27,11 @@ String       pn;
 
 
 void AdjProjView::OnPrepareDC(CDC* pDC, CPrintInfo* pInfo) {
-//uint   x;
-double topMgn   = 3.0;            // options.topMargin.stod(x);
-double leftMgn  = 3.0;            // options.leftMargin.stod(x);
-double rightMgn = 3.0;            // options.rightMargin.stod(x);
-double botMgn   = 3.0;            // options.botMargin.stod(x);
+uint   x;
+double topMgn   = options.topMargin.stod(x);
+double leftMgn  = options.leftMargin.stod(x);
+double rightMgn = options.rightMargin.stod(x);
+double botMgn   = options.botMargin.stod(x);
 
   setIsNotePad(!notePad.isEmpty() || doc()->dataSrc() == NoteSource);
 
@@ -62,7 +63,7 @@ DataSource ds   = isNotePad ? NoteSource : doc()->dataSrc();
 void AdjProjView::OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo) {
 
   switch(doc()->dataSrc()) {
-    case NoteSource : setOrientation(Portrait); break;    // Setup separate Orientation?
+    case NoteSource : setOrientation(options.orient); break;    // Setup separate Orientation?
     }
   setPrntrOrient(theApp.getDevMode(), pDC);   CScrView::OnBeginPrinting(pDC, pInfo);
   }

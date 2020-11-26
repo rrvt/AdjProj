@@ -113,6 +113,8 @@
     <ClInclude Include="AdjProjDoc.h" />
     <ClInclude Include="AdjProjView.h" />
     <ClInclude Include="MainFrame.h" />
+    <ClInclude Include="Options.h" />
+    <ClInclude Include="OptionsDlg.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Store.h" />
@@ -125,6 +127,8 @@
     <ClCompile Include="AdjProjDoc.cpp" />
     <ClCompile Include="AdjProjView.cpp" />
     <ClCompile Include="MainFrame.cpp" />
+    <ClCompile Include="Options.cpp" />
+    <ClCompile Include="OptionsDlg.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Store.cpp" />
     <ClCompile Include="XMLparser.cpp" />

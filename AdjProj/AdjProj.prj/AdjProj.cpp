@@ -6,6 +6,7 @@
 #include "About.h"
 #include "GetPathDlg.h"
 #include "IniFile.h"
+#include "Options.h"
 #include "Resources.h"
 #include "AdjProjDoc.h"
 #include "AdjProjView.h"
@@ -73,6 +74,8 @@ BOOL AdjProj::InitInstance() {
   if (!ProcessShellCommand(cmdInfo)) return FALSE;
 
   setAppName(_T("AdjProj"));  setTitle(_T("Adjust Project Files"));
+
+  options.load();    view()->setOrientation(options.orient);
 
   view()->setFont(_T("Courier New"), 120);
 

@@ -4,12 +4,14 @@
 #include "stdafx.h"
 #include "AdjProjDoc.h"
 #include "AdjProj.h"
+#include "AdjProjView.h"
 #include "CopyFile.h"
 #include "filename.h"
 #include "filesrch.h"
 #include "GetPathDlg.h"
 #include "MessageBox.h"
 #include "NotePad.h"
+#include "Options.h"
 #include "Resource.h"
 #include "Store.h"
 
@@ -19,10 +21,11 @@
 IMPLEMENT_DYNCREATE(AdjProjDoc, CDocument)
 
 BEGIN_MESSAGE_MAP(AdjProjDoc, CDocument)
-  ON_COMMAND(ID_FILE_OPEN,  &AdjProjDoc::OnFileOpen)
-  ON_COMMAND(ID_FILE_SAVE,  &AdjProjDoc::OnFileSave)
-  ON_COMMAND(ID_Test,       &AdjProjDoc::OnTest)
-  ON_COMMAND(ID_Adjust,     &AdjProjDoc::OnAdjust)
+  ON_COMMAND(ID_FILE_OPEN,  &OnFileOpen)
+  ON_COMMAND(ID_FILE_SAVE,  &OnFileSave)
+  ON_COMMAND(ID_Test,       &OnTest)
+  ON_COMMAND(ID_Adjust,     &OnAdjust)
+  ON_COMMAND(ID_Options,    &OnOptions)
 
 END_MESSAGE_MAP()
 
@@ -53,6 +56,9 @@ Element* img;
                                   if (res && (non || img)) {store.reorder(res, non, img);}
   display();
   }
+
+
+void AdjProjDoc::OnOptions() {options();  view()->setOrientation(options.orient);}
 
 
 
