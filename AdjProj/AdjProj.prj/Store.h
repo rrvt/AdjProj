@@ -34,27 +34,8 @@ String  sortName;
   bool operator== (XMLbase& x) {return _tcsicmp(sortName, x.sortName) == 0;}
   bool operator>  (XMLbase& x) {return _tcsicmp(sortName, x.sortName) >  0;}
   bool operator<= (XMLbase& x) {return _tcsicmp(sortName, x.sortName) <= 0;}
-
-//  void examine(XMLbase& x, TCchar* where);
   };
 
-
-#if 0
-struct XMLbasePtr {
-XMLbase* p;
-
-  XMLbasePtr() : p(0) { }
- ~XMLbasePtr() { }
-  XMLbasePtr(XMLbasePtr& x) {p = x.p;}
-
-  void        clear();
-
-  bool        operator== (XMLbasePtr& x) {return *p == *x.p;}
-  bool        operator>  (XMLbasePtr& x) {return *p >  *x.p;}
-  bool        operator<= (XMLbasePtr& x) {return *p <= *x.p;}
-  XMLbasePtr& operator=  (XMLbasePtr& x) {p = x.p; return *this;}
-  };
-#endif
 
 
 struct Attrib : public XMLbase {

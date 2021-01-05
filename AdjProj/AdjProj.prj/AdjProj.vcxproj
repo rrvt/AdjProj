@@ -63,7 +63,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir);D:\sources\Library\LibFiles\;D:\sources\Library\AboutFiles\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);D:\sources\Library\Library.prj\;D:\sources\Library\Extras\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -76,7 +76,7 @@
     <ResourceCompile>
       <Culture>0x0409</Culture>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(IntDir);D:\sources\Library\AboutFiles\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(IntDir);D:\sources\Library\Extras\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -89,7 +89,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir);D:\sources\Library\LibFiles\;D:\sources\Library\AboutFiles\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);D:\sources\Library\Library.prj\;D:\sources\Library\Extras\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -104,17 +104,17 @@
     <ResourceCompile>
       <Culture>0x0409</Culture>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(IntDir);D:\sources\Library\AboutFiles\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(IntDir);D:\sources\Library\Extras\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Sources\Library\AboutFiles\About.h" />
+    <ClInclude Include="..\..\Library\Extras\About.h" />
+    <ClInclude Include="..\..\Library\Extras\ExtraResource.h" />
+    <ClInclude Include="..\..\Library\Extras\OptionsDlg.h" />
     <ClInclude Include="AdjProj.h" />
     <ClInclude Include="AdjProjDoc.h" />
     <ClInclude Include="AdjProjView.h" />
     <ClInclude Include="MainFrame.h" />
-    <ClInclude Include="Options.h" />
-    <ClInclude Include="OptionsDlg.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Store.h" />
@@ -122,13 +122,12 @@
     <ClInclude Include="XMLparser.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Sources\Library\AboutFiles\About.cpp" />
+    <ClCompile Include="..\..\Library\Extras\About.cpp" />
+    <ClCompile Include="..\..\Library\Extras\OptionsDlg.cpp" />
     <ClCompile Include="AdjProj.cpp" />
     <ClCompile Include="AdjProjDoc.cpp" />
     <ClCompile Include="AdjProjView.cpp" />
     <ClCompile Include="MainFrame.cpp" />
-    <ClCompile Include="Options.cpp" />
-    <ClCompile Include="OptionsDlg.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Store.cpp" />
     <ClCompile Include="XMLparser.cpp" />
@@ -137,7 +136,8 @@
     <ResourceCompile Include="AdjProj.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\Sources\Library\AboutFiles\About.rc2" />
+    <None Include="..\..\Library\Extras\About.rc2" />
+    <None Include="..\..\Library\Extras\Options.rc2" />
     <None Include="res\AdjProj.rc2" />
     <None Include="..\README.md" />
   </ItemGroup>
@@ -147,8 +147,8 @@
     <Image Include="res\Toolbar02.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Sources\Library\LibUni7\LibUni7.vcxproj">
-      <Project>{4412F044-41CC-4225-92DD-30A4069EE88E}</Project>
+    <ProjectReference Include="..\..\Library\Library.prj\Library.vcxproj">
+      <Project>{cf57f3ec-d3db-4469-8519-3f9d73785d9b}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

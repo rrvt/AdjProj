@@ -73,7 +73,7 @@ void AdjProjView::OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo) {
 // The output streaming functions are very similar to NotePad's streaming functions so it should not
 // be a great hardship to construct a footer.
 
-void AdjProjView::printFooter(Display& dev, int pageNo) {
+void AdjProjView::printFooter(Device& dev, int pageNo) {
   switch(doc()->dataSrc()) {
     case NoteSource : prtNote.footer(dev, pageNo);  break;
     }

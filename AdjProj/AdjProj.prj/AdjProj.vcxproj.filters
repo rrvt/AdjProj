@@ -33,9 +33,6 @@
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Sources\Library\AboutFiles\About.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MainFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -45,10 +42,13 @@
     <ClInclude Include="XMLparser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Options.h">
+    <ClInclude Include="..\..\Library\Extras\About.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="OptionsDlg.h">
+    <ClInclude Include="..\..\Library\Extras\OptionsDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Library\Extras\ExtraResource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -65,9 +65,6 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Sources\Library\AboutFiles\About.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MainFrame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -77,10 +74,10 @@
     <ClCompile Include="XMLparser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Options.cpp">
+    <ClCompile Include="..\..\Library\Extras\About.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OptionsDlg.cpp">
+    <ClCompile Include="..\..\Library\Extras\OptionsDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -93,10 +90,13 @@
     <None Include="res\AdjProj.rc2">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\..\..\Sources\Library\AboutFiles\About.rc2">
+    <None Include="..\README.md" />
+    <None Include="..\..\Library\Extras\About.rc2">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\README.md" />
+    <None Include="..\..\Library\Extras\Options.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\AdjProj.ico">

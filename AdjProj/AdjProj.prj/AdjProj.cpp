@@ -26,13 +26,7 @@ END_MESSAGE_MAP()
 
 // AdjProj construction
 
-AdjProj::AdjProj() noexcept {
-ResourceData res;
-
-  res.getVersion(version);
-
-  if (res.getAppID(appID)) SetAppID(appID);
-  }
+AdjProj::AdjProj() noexcept : CApp(this) { }
 
 
 // AdjProj initialization
@@ -77,44 +71,12 @@ BOOL AdjProj::InitInstance() {
 
   options.load();    view()->setOrientation(options.orient);
 
-  view()->setFont(_T("Courier New"), 120);
+  view()->setFont(_T("Courier New"), 12.0);
 
   // The one and only window has been initialized, so show and update it
 
   m_pMainWnd->ShowWindow(SW_SHOW);   m_pMainWnd->UpdateWindow();   return TRUE;
   }
-
-
-#if 0
-void AdjProj::invalidate() {if (getView()) view->Invalidate();}
-
-
-AdjProjView* AdjProj::getView() {
-POSITION   pos;
-
-  if (view) return view;
-
-  if (!getDocument()) return 0;
-
-  pos  = doc->GetFirstViewPosition();   if (!pos)  return 0;
-
-  return view = (AdjProjView*) doc->GetNextView(pos);
-  }
-
-
-
-AdjProjDoc* AdjProj::getDocument() {
-
-  if (doc) return doc;
-
-  POSITION      pos = GetFirstDocTemplatePosition(); if (!pos) return 0;
-  CDocTemplate* t   = GetNextDocTemplate(pos);       if (!t)   return 0;
-
-  pos = t->GetFirstDocPosition();                    if (!pos) return 0;
-
-  return doc = (AdjProjDoc*) t->GetNextDoc(pos);
-  }
-#endif
 
 
 void AdjProj::OnAppAbout() {CAboutDlg aboutDlg; aboutDlg.DoModal();}

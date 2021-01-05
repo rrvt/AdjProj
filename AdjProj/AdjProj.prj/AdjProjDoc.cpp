@@ -6,6 +6,7 @@
 #include "AdjProj.h"
 #include "AdjProjView.h"
 #include "CopyFile.h"
+#include "ExtraResource.h"
 #include "filename.h"
 #include "filesrch.h"
 #include "GetPathDlg.h"
@@ -58,7 +59,7 @@ Element* img;
   }
 
 
-void AdjProjDoc::OnOptions() {options();  view()->setOrientation(options.orient);}
+void AdjProjDoc::OnOptions() {options(view());  view()->setOrientation(options.orient);}
 
 
 

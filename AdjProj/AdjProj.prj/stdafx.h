@@ -4,6 +4,11 @@
 
 #pragma once
 
+#ifdef DebugMemoryLeaks
+#define _CRTDBG_MAP_ALLOC
+#include <crtdbg.h>
+#endif
+
 #ifndef _SECURE_ATL
 #define _SECURE_ATL 1
 #endif
