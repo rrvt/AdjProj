@@ -3,7 +3,7 @@
 
 #pragma once
 #include "CScrView.h"
-#include "NoteRptB.h"
+#include "NotePadRpt.h"
 
 
 class AdjProjDoc;
@@ -11,8 +11,8 @@ class AdjProjDoc;
 
 class AdjProjView : public CScrView {
 
-NoteRptB dspNote;
-NoteRptB prtNote;
+NotePadRpt dspNote;
+NotePadRpt prtNote;
 
 protected: // create from serialization only
 
@@ -24,7 +24,7 @@ public:
   virtual ~AdjProjView() { }
 
   virtual void OnPrepareDC(CDC* pDC, CPrintInfo* pInfo = NULL);
-  virtual void onPrepareOutput(bool isNotePad, bool printing);
+  virtual void onPrepareOutput(bool printing);
 
   virtual void OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo);
   virtual void printFooter(Device& dev, int pageNo);

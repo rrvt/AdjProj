@@ -21,6 +21,10 @@ Copy an vcxproj file into the data directory and practice with it.
 
 ## Updates
 
+### Update 1/20/21
+
+Added Help file.  Cleaned up toolbar and menu commands.  Added flying comments for toolbar.
+
 ### Update 1/4/21
 
 Most of the changes were to the Library which impacted Adjust Project File.

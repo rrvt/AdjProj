@@ -1,0 +1,42 @@
+[SolutionInfo]
+Path=D:\SandBox\AdjProj\AdjProj\
+Name=AdjProj
+[DefaultPath]
+BackupIndex=2
+Icon=D:\SandBox\AdjProj\AdjProj.prj\res\
+Component=D:\SandBox\AdjProj\Release\
+[Product]
+WixName=AdjProj
+WixVersion=1.0.1.0
+Company=Bob -- K6RWY
+ProductName=Adjust VS17 Project File
+UpgradeGUID=EA4C65D3-11DC-4DE0-A8D0-78C49E2CC1C6
+SaveVerAllowed=0
+LicenseRequired=0
+LicensePath=
+IconPath=D:\SandBox\AdjProj\AdjProj.prj\res\AdjProj.ico
+[FeatureList]
+CurSel=Main
+NoFeatures=1
+Feature00=Main
+[Main.grp]
+CurSel=Adjust VS17 Project
+NoComponents=1
+Component00=Adjust VS17 Project
+[Adjust VS17 Project.cmp]
+ID=Adjust VS17 Project
+Path=D:\SandBox\AdjProj\Release\AdjProj.exe
+Guid=50328CD2-D7A6-45C9-A591-1449DF33BC66
+Description=Adjust VS17 Project File
+IconPath=D:\SandBox\AdjProj\AdjProj.prj\res\AdjProj.ico
+IsStartMenu=1
+IsDeskTop=1
+IsVersionAvail=1
+IsOnPath=0
+IsWin7=0
+IsWinXP=0
+IsWin2K=0
+ProgramParent=
+ProgramChild=AdjProj
+StartParent=
+StartChild=AdjProj

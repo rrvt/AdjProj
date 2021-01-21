@@ -6,7 +6,7 @@
 #include "XMLparser.h"
 
 
-enum DataSource {NoteSource};
+enum DataSource {NotePadSrc};
 
 
 class AdjProjDoc : public CDoc {
@@ -48,9 +48,8 @@ protected:
   DECLARE_MESSAGE_MAP()
 
 public:
-  afx_msg void OnTest();
   afx_msg void OnFileOpen();
   afx_msg void OnAdjust();
   afx_msg void OnFileSave();
   afx_msg void OnOptions();
-};
+  };

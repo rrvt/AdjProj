@@ -6,9 +6,8 @@
 
 #define IDR_MAINFRAME         100
 
-#define ID_Test               400
-#define ID_Adjust             401
-
+#define ID_Adjust             400
+#define ID_Help               401
 
 // Next default values for new objects
 //

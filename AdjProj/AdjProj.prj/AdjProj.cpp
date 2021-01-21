@@ -21,6 +21,7 @@ IniFile iniFile;
 BEGIN_MESSAGE_MAP(AdjProj, CWinAppEx)
   ON_COMMAND(ID_APP_ABOUT,        &AdjProj::OnAppAbout)
   ON_COMMAND(ID_FILE_PRINT_SETUP, &CWinAppEx::OnFilePrintSetup)
+  ON_COMMAND(ID_Help,             &OnHelp)
 END_MESSAGE_MAP()
 
 
@@ -79,6 +80,14 @@ BOOL AdjProj::InitInstance() {
   }
 
 
+void AdjProj::OnHelp() {
+String topic = m_pszHelpFilePath; topic += _T(">Introduction");
+
+  ::HtmlHelp(m_pMainWnd->m_hWnd, topic,  HH_DISPLAY_TOC, 0);
+  }
+
+
 void AdjProj::OnAppAbout() {CAboutDlg aboutDlg; aboutDlg.DoModal();}
+
 
 

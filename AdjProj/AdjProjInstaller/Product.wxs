@@ -42,6 +42,7 @@
 <Fragment>
 <ComponentGroup Id="Main.ftr">
   <ComponentRef Id="AdjustVS17Project.cmp"/>
+  <ComponentRef Id="Help.cmp"/>
 </ComponentGroup>
 <ComponentGroup Id="UninstallAdjustVS17Project.ftr">
   <ComponentRef Id="UninstallAdjustVS17Project.cmp"/>
@@ -52,11 +53,11 @@
 <Fragment>
   <Directory Id="TARGETDIR" Name="SourceDir">
     <Directory Id="ProgramFilesFolder">
-      <Directory Id="AdjProj.pff" Name="AdjProj"/>
+      <Directory Id="AdjProj.pff" Name="AdjProj" />
     </Directory>
 
     <Directory Id="ProgramMenuFolder" Name="StartMenu">
-      <Directory Id="AdjProj.pmf" Name="AdjProj"/>
+      <Directory Id="AdjProj.pmf" Name="AdjProj" />
     </Directory>
 
     <Directory Id="DesktopFolder" Name="Desktop" />
@@ -70,7 +71,7 @@
 <Fragment>
 
   <Component Id="AdjustVS17Project.cmp" 
-                                  Guid="50328CD2-D7A6-45C9-A591-1449DF33BC66" Directory="AdjProj.pff">
+                                  Guid="F136A420-01AD-4974-BFBD-C30742F18ADF" Directory="AdjProj.pff">
     <File Id="AdjustVS17Project.cmp" Source="$(var.SolutionDir)..\Release\AdjProj.exe" KeyPath="yes"/>
 
     <Shortcut Id               = "AdjustVS17Project.shc"
@@ -92,12 +93,16 @@
               />
   </Component>
 
+  <Component Id="Help.cmp"  Guid="3A3068B1-C4BD-4134-88B2-3993D49FFFAB" Directory="AdjProj.pff">
+    <File Id="Help.cmp" Source="$(var.SolutionDir)..\Release\AdjProj.chm" KeyPath="yes"/>
+  </Component>
+
 </Fragment>
 
 <Fragment>
 
   <Component Id="UninstallAdjustVS17Project.cmp" 
-                                  Guid="FC95E0B8-2B4A-43C1-A2FA-1CC0462ED08F" Directory="AdjProj.pmf">
+                                  Guid="B5DC37D7-EE87-4450-A727-8DDF0E54E226" Directory="AdjProj.pmf">
 
     <Shortcut Id               = "UninstallAdjustVS17Project.shc"
               Name             = "Uninstall Adjust VS17 Project"

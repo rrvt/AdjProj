@@ -25,7 +25,7 @@ void Debug::num(Tchar*  t, double n) {text = t; text += n; messageBox();}
 
 
 
-#if 0
+#ifdef UglyDebug
 void Debug::examine() {
 NtPdIter iter(notePad);
 Note*    note;

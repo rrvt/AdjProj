@@ -1,42 +1,64 @@
 [SolutionInfo]
-Path=D:\SandBox\AdjProj\AdjProj\
+Path=D:\Sources\AdjProj\AdjProj\
 Name=AdjProj
+Version=2.0
+[Icons]
+NoIcons=1
+[Icon00]
+IconID=AdjProj
+WixID=AdjProjIcon.ico
+IconPath=D:\Sources\AdjProj\AdjProj.prj\res\AdjProj.ico
 [DefaultPath]
-BackupIndex=2
-Icon=D:\SandBox\AdjProj\AdjProj.prj\res\
-Component=D:\SandBox\AdjProj\Release\
+NPaths=2
+DefKey0=Main.ftr
+Main.ftr.Path=D:\Sources\AdjProj\Release\
+DefKey1=Icon
+Icon.Path=D:\Sources\AdjProj\Release\
 [Product]
-WixName=AdjProj
-WixVersion=1.0.1.0
-Company=Bob -- K6RWY
 ProductName=Adjust VS17 Project File
+Company=Bob -- K6RWY
+WixName=AdjProj
+WixVersion=1.0.15.0
 UpgradeGUID=EA4C65D3-11DC-4DE0-A8D0-78C49E2CC1C6
 SaveVerAllowed=0
 LicenseRequired=0
-LicensePath=
-IconPath=D:\SandBox\AdjProj\AdjProj.prj\res\AdjProj.ico
-[FeatureList]
+LicensePath=D:\Sources\AdjProj\AdjProj\
+IconID=AdjProj
+[PFFDirectories]
+NoDirectories=1
+[PFFDirDesc00]
+ID=AdjProj
+WixID=AdjProj.pff
+Parent=
+Name=AdjProj
+HasChildren=0
+[PMFDirectories]
+NoDirectories=1
+[PMFDirDesc00]
+ID=AdjProj
+WixID=AdjProj.pmf
+Parent=
+Name=AdjProj
+HasChildren=0
+[Features]
+Count=1
 CurSel=Main
-NoFeatures=1
-Feature00=Main
-[Main.grp]
-CurSel=Adjust VS17 Project
-NoComponents=1
-Component00=Adjust VS17 Project
-[Adjust VS17 Project.cmp]
+[Ftr00]
+FeatureID=Main
+ProgramID=AdjProj
+StartMenuID=AdjProj
+CurSel=Help
+NoComponents=2
+[Ftr00Cmp00]
 ID=Adjust VS17 Project
-Path=D:\SandBox\AdjProj\Release\AdjProj.exe
-Guid=50328CD2-D7A6-45C9-A591-1449DF33BC66
+Path=D:\Sources\AdjProj\Release\AdjProj.exe
+Guid=F136A420-01AD-4974-BFBD-C30742F18ADF
 Description=Adjust VS17 Project File
-IconPath=D:\SandBox\AdjProj\AdjProj.prj\res\AdjProj.ico
+IconID=AdjProj
 IsStartMenu=1
 IsDeskTop=1
 IsVersionAvail=1
-IsOnPath=0
-IsWin7=0
-IsWinXP=0
-IsWin2K=0
-ProgramParent=
-ProgramChild=AdjProj
-StartParent=
-StartChild=AdjProj
+[Ftr00Cmp01]
+ID=Help
+Path=D:\Sources\AdjProj\Release\AdjProj.chm
+Guid=3A3068B1-C4BD-4134-88B2-3993D49FFFAB

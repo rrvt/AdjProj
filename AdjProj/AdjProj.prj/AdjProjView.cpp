@@ -17,7 +17,7 @@ BEGIN_MESSAGE_MAP(AdjProjView, CScrView)
 END_MESSAGE_MAP()
 
 
-AdjProjView::AdjProjView() noexcept : dspNote( nMgr.getNotePad()), prtNote( pMgr.getNotePad()) {
+AdjProjView::AdjProjView() noexcept : dspNote( dMgr.getNotePad()), prtNote( pMgr.getNotePad()) {
 
 ResourceData res;
 String       pn;
@@ -33,38 +33,28 @@ double leftMgn  = options.leftMargin.stod(x);
 double rightMgn = options.rightMargin.stod(x);
 double botMgn   = options.botMargin.stod(x);
 
-  setIsNotePad(!notePad.isEmpty() || doc()->dataSrc() == NoteSource);
-
   setMgns(leftMgn,  topMgn,  rightMgn, botMgn, pDC);   CScrView::OnPrepareDC(pDC, pInfo);
   }
 
 
 // Perpare output (i.e. report) then start the output with the call to SCrView
 
-void AdjProjView::onPrepareOutput(bool isNotePad, bool printing) {
-DataSource ds   = isNotePad ? NoteSource : doc()->dataSrc();
+void AdjProjView::onPrepareOutput(bool printing) {
+DataSource ds   = doc()->dataSrc();
 
-  switch (printing) {
-    case true : switch(ds) {
-                  case NoteSource : prtNote.print(*this);  break;
-                  }
-                break;
+  if (printing) prtNote.print(*this);
+  else          dspNote.display(*this);
 
-    case false: switch(ds) {
-                  case NoteSource : dspNote.display(*this);  break;
-                  }
-                break;
-    }
-
-  CScrView::onPrepareOutput(isNotePad, printing);
+  CScrView::onPrepareOutput(printing);
   }
 
 
 void AdjProjView::OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo) {
 
   switch(doc()->dataSrc()) {
-    case NoteSource : setOrientation(options.orient); break;    // Setup separate Orientation?
+    case NotePadSrc : setOrientation(options.orient); break;    // Setup separate Orientation?
     }
+
   setPrntrOrient(theApp.getDevMode(), pDC);   CScrView::OnBeginPrinting(pDC, pInfo);
   }
 
@@ -75,7 +65,7 @@ void AdjProjView::OnBeginPrinting(CDC* pDC, CPrintInfo* pInfo) {
 
 void AdjProjView::printFooter(Device& dev, int pageNo) {
   switch(doc()->dataSrc()) {
-    case NoteSource : prtNote.footer(dev, pageNo);  break;
+    case NotePadSrc : prtNote.footer(dev, pageNo);  break;
     }
   }
 
@@ -86,7 +76,7 @@ void AdjProjView::OnEndPrinting(CDC* pDC, CPrintInfo* pInfo) {
   CScrView::OnEndPrinting(pDC, pInfo);
 
   switch(doc()->dataSrc()) {
-    case NoteSource : break;
+    case NotePadSrc : break;
     }
   }
 
@@ -96,7 +86,7 @@ void AdjProjView::OnSetFocus(CWnd* pOldWnd) {
   CScrView::OnSetFocus(pOldWnd);
 
   switch(doc()->dataSrc()) {
-    case NoteSource : break;
+    case NotePadSrc : break;
     }
   }
 

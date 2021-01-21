@@ -32,6 +32,7 @@ String version;
   AdjProjView* view() {return (AdjProjView*) CApp::getView();}
 
   afx_msg void OnAppAbout();
+  afx_msg void OnHelp();
 
   DECLARE_MESSAGE_MAP()
   };

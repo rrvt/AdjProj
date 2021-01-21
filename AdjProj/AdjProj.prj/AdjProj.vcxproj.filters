@@ -108,5 +108,8 @@
     <Image Include="res\Toolbar02.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\Toolbar03.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
