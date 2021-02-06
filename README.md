@@ -21,6 +21,10 @@ Copy an vcxproj file into the data directory and practice with it.
 
 ## Updates
 
+### Update 2/5/21
+
+The library has new features for an Access database interface.  The Icons where changed.
+
 ### Update 1/20/21
 
 Added Help file.  Cleaned up toolbar and menu commands.  Added flying comments for toolbar.
