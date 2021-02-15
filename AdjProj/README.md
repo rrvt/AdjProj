@@ -21,6 +21,11 @@ Copy an vcxproj file into the data directory and practice with it.
 
 ## Updates
 
+### Update 2/15/21
+
+Fixed Backup date preparation to use 2 digit year instead of century.  Worked last year due to
+coincidence (ugh!!!).
+
 ### Update 2/5/21
 
 The library has new features for an Access database interface.  The Icons where changed.
