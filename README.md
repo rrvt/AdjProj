@@ -21,6 +21,10 @@ Copy an vcxproj file into the data directory and practice with it.
 
 ## Updates
 
+### Update 4/14/21
+
+Minor updates due to changes in the library.
+
 ### Update 2/15/21
 
 Fixed Backup date preparation to use 2 digit year instead of century.  Worked last year due to

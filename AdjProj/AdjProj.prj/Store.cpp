@@ -47,7 +47,7 @@ Element* elem;
   }
 
 
-void Element::sort() {int n = items.end();   qsort(&items[0], &items[n-1]);}
+  void Element::sort() {int n = items.end();   qsort(&items[0], &items[n-1]);}
 
 
 void Element::clear() {

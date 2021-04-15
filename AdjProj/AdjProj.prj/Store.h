@@ -11,10 +11,21 @@
 enum XMLType {XMLnil, ElementTag, StartTag, EndTag, EmptyTag, XMLAttrib, XMLdeclaration};
 
 
-//  *p == *q
+/*
+//  *p == *q       required for qSort
 //  *p >  *q
 //  *p <= *q
 //  *s =  *p
+
+  // Required for Insertion Sort, i.e. data = dtm;
+  bool operator >= (Record& r) {return key >= r.key;}
+  bool operator == (Record& r) {return key == r.key;}
+
+  // Required for Binary Search
+  bool operator== (TCchar* key) {return this->key == key;}
+  bool operator<  (TCchar* key) {return this->key <  key;}
+  bool operator>  (TCchar* key) {return this->key >  key;}
+*/
 
 class XMLbase {
 public:
@@ -32,8 +43,13 @@ String  sortName;
   bool getFileName(String& line);
 
   bool operator== (XMLbase& x) {return _tcsicmp(sortName, x.sortName) == 0;}
-  bool operator>  (XMLbase& x) {return _tcsicmp(sortName, x.sortName) >  0;}
+  bool operator>= (XMLbase& x) {return _tcsicmp(sortName, x.sortName) >= 0;}
   bool operator<= (XMLbase& x) {return _tcsicmp(sortName, x.sortName) <= 0;}
+  bool operator>  (XMLbase& x) {return _tcsicmp(sortName, x.sortName) >  0;}
+
+//  bool operator== (TCchar* name) {return  _tcsicmp(sortName, name) == 0;}
+//  bool operator<  (TCchar* name) {return  _tcsicmp(sortName, name) <  0;}
+//  bool operator>  (TCchar* name) {return  _tcsicmp(sortName, name) >  0;}
   };
 
 
