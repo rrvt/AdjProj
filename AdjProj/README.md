@@ -21,6 +21,10 @@ Copy an vcxproj file into the data directory and practice with it.
 
 ## Updates
 
+### Update 10/2/21
+
+Library update only.
+
 ### Update 4/14/21
 
 Minor updates due to changes in the library.
