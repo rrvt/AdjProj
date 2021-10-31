@@ -24,7 +24,7 @@ public:
 
 String version;
 
-               AdjProj() noexcept;
+               AdjProj() noexcept : CApp(this) { }
 
   virtual BOOL InitInstance();
 

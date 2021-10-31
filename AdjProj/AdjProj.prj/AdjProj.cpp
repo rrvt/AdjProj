@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include "AdjProj.h"
-#include "About.h"
+#include "AboutDlg.h"
 #include "GetPathDlg.h"
 #include "IniFile.h"
 #include "Options.h"
@@ -27,7 +27,7 @@ END_MESSAGE_MAP()
 
 // AdjProj construction
 
-AdjProj::AdjProj() noexcept : CApp(this) { }
+//AdjProj::AdjProj() noexcept : CApp(this) { }
 
 
 // AdjProj initialization
@@ -87,7 +87,7 @@ String topic = m_pszHelpFilePath; topic += _T(">Introduction");
   }
 
 
-void AdjProj::OnAppAbout() {CAboutDlg aboutDlg; aboutDlg.DoModal();}
+void AdjProj::OnAppAbout() {AboutDlg aboutDlg; aboutDlg.DoModal();}
 
 
 
