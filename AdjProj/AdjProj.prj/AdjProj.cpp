@@ -25,11 +25,6 @@ BEGIN_MESSAGE_MAP(AdjProj, CWinAppEx)
 END_MESSAGE_MAP()
 
 
-// AdjProj construction
-
-//AdjProj::AdjProj() noexcept : CApp(this) { }
-
-
 // AdjProj initialization
 
 BOOL AdjProj::InitInstance() {

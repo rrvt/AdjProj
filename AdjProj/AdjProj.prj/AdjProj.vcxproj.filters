@@ -97,15 +97,15 @@
     <None Include="..\..\Library\Extras\AboutDlg.rc2">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="res\Toolbar10.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\Uninstall.ico">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\AdjProj.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\Toolbar00.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\Toolbar03.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
