@@ -75,7 +75,7 @@ String line;
   };
 
 
-typedef RcdPtrT<XMLbase> XMLbasePB;
+typedef DatumPtrT<XMLbase> XMLbasePB;
 
 
 class XMLbaseP : public XMLbasePB {
