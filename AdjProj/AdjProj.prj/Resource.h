@@ -8,6 +8,7 @@
 
 #define ID_Adjust             400
 #define ID_Help               401
+#define ID_NotCompliedHdrs    402
 
 // Next default values for new objects
 //
@@ -16,6 +17,6 @@
 #define _APS_NEXT_RESOURCE_VALUE  101
 #define _APS_NEXT_CONTROL_VALUE   208
 #define _APS_NEXT_SYMED_VALUE     310
-#define _APS_NEXT_COMMAND_VALUE   402
+#define _APS_NEXT_COMMAND_VALUE   403
 #endif
 #endif

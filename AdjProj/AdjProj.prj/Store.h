@@ -46,10 +46,6 @@ String  sortName;
   bool operator>= (XMLbase& x) {return _tcsicmp(sortName, x.sortName) >= 0;}
   bool operator<= (XMLbase& x) {return _tcsicmp(sortName, x.sortName) <= 0;}
   bool operator>  (XMLbase& x) {return _tcsicmp(sortName, x.sortName) >  0;}
-
-//  bool operator== (TCchar* name) {return  _tcsicmp(sortName, name) == 0;}
-//  bool operator<  (TCchar* name) {return  _tcsicmp(sortName, name) <  0;}
-//  bool operator>  (TCchar* name) {return  _tcsicmp(sortName, name) >  0;}
   };
 
 
@@ -175,3 +171,13 @@ String xmlVersion;
 
 
 extern Store store;
+
+
+
+
+
+
+//  bool operator== (TCchar* name) {return  _tcsicmp(sortName, name) == 0;}
+//  bool operator<  (TCchar* name) {return  _tcsicmp(sortName, name) <  0;}
+//  bool operator>  (TCchar* name) {return  _tcsicmp(sortName, name) >  0;}
+

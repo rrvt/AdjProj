@@ -22,9 +22,10 @@
 IMPLEMENT_DYNCREATE(AdjProjDoc, CDocument)
 
 BEGIN_MESSAGE_MAP(AdjProjDoc, CDocument)
-  ON_COMMAND(ID_FILE_OPEN,  &OnFileOpen)
-  ON_COMMAND(ID_FILE_SAVE,  &OnFileSave)
-  ON_COMMAND(ID_Adjust,     &OnAdjust)
+  ON_COMMAND(ID_FILE_OPEN,       &OnFileOpen)
+  ON_COMMAND(ID_FILE_SAVE,       &OnFileSave)
+  ON_COMMAND(ID_Adjust,          &OnAdjust)
+
   ON_COMMAND(ID_Options,    &OnOptions)
 END_MESSAGE_MAP()
 

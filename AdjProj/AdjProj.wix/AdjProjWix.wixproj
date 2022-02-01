@@ -6,7 +6,7 @@
     <ProductVersion>3.10</ProductVersion>
     <ProjectGuid>fd7aca15-0ef2-4af8-bbf7-2fdadb4110ef</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>AdjProjInstaller</OutputName>
+    <OutputName>AdjProj</OutputName>
     <OutputType>Package</OutputType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">

@@ -69,7 +69,6 @@ XMLType typ[10];
   if (i > 2) {messageBox(_T("More than two tags in line"));
   }
 
-
   name = names[0]; return typ[0];
   }
 

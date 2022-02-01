@@ -50,6 +50,7 @@ protected:
 public:
   afx_msg void OnFileOpen();
   afx_msg void OnAdjust();
+
   afx_msg void OnFileSave();
   afx_msg void OnOptions();
   };
