@@ -57,11 +57,11 @@
       <Directory Id="AdjProj.pff" Name="AdjProj" />
     </Directory>
 
-    <Directory Id="ProgramMenuFolder" Name="StartMenu">
+    <Directory Id="ProgramMenuFolder">
       <Directory Id="AdjProj.pmf" Name="AdjProj" />
     </Directory>
 
-    <Directory Id="DesktopFolder" Name="Desktop" />
+    <Directory Id="DesktopFolder" />
   </Directory>
 
   <Property Id="ApplicationFolderName" Value="AdjProj" />
@@ -103,7 +103,7 @@
 <Fragment>
 
   <Component Id="UninstallAdjustVS17Project.cmp" 
-                                  Guid="6FC7D9B4-8D6E-496C-8649-4165BE45A92D" Directory="AdjProj.pmf">
+                                  Guid="7A97D94A-0871-4537-B855-3149DB159236" Directory="AdjProj.pmf">
 
     <Shortcut Id               = "UninstallAdjustVS17Project.shc"
               Name             = "Uninstall Adjust VS17 Project"

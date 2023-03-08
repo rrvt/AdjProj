@@ -21,6 +21,15 @@ Copy an vcxproj file into the data directory and practice with it.
 
 ## Updates
 
+### Update 3/7/23
+
+Fixed (hopefully) Print and Print Preview.  See MakeApp for details.
+
+### Update 10/30/22
+
+Add logic to start app in the same position and size as when it exited the previous time.  Update the
+background of the toolbar.  Update the icons in the help file.
+
 ### Update 8/3/22
 
 Minor Library updates.

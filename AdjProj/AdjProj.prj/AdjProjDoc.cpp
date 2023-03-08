@@ -9,12 +9,14 @@
 #include "ExtraResource.h"
 #include "filename.h"
 #include "filesrch.h"
-#include "GetPathDlg.h"
 #include "MessageBox.h"
 #include "NotePad.h"
-#include "Options.h"
 #include "Resource.h"
 #include "Store.h"
+
+
+static TCchar* FileSection = _T("FileSection");
+static TCchar* FileName    = _T("Name");
 
 
 // AdjProjDoc
@@ -25,15 +27,13 @@ BEGIN_MESSAGE_MAP(AdjProjDoc, CDocument)
   ON_COMMAND(ID_FILE_OPEN,       &OnFileOpen)
   ON_COMMAND(ID_FILE_SAVE,       &OnFileSave)
   ON_COMMAND(ID_Adjust,          &OnAdjust)
-
-  ON_COMMAND(ID_Options,    &OnOptions)
 END_MESSAGE_MAP()
 
 
 // AdjProjDoc construction/destruction
 
 AdjProjDoc::AdjProjDoc() noexcept {
-  saveAsTitle = _T("Adjust Project");   defExt = _T("txt");   defFilePat = _T("*.txt");
+  dsc(_T("Adjust Project"), _T(""), _T("txt"), _T("*.txt"));
   }
 
 AdjProjDoc::~AdjProjDoc() { }
@@ -58,9 +58,6 @@ Element* img;
   }
 
 
-void AdjProjDoc::OnOptions() {options(view());  view()->setOrientation(options.orient);}
-
-
 void AdjProjDoc::display() {
 int i;
 
@@ -72,28 +69,27 @@ int i;
 
 
 void AdjProjDoc::OnFileOpen() {
-String path;
+String name;
 
   store.clear();
 
-  saveAsTitle = _T("Adjust Project");   defExt = _T("vcxproj");   defFilePat = _T("*.vcxproj");
+  iniFile.read(FileSection, FileName, name);
 
-  if (!getPathDlg(saveAsTitle, defFileName, defExt, defFilePat, path)) return;
+  dsc(_T("Adjust Project"), name, _T("vcxproj"), _T("*.vcxproj"));
 
-  defFileName = getMainName(path);
+  if (!setOpenPath(dsc)) return;
+
+  dsc.name = path;   iniFile.write(FileSection, FileName, path);
 
   if (OnOpenDocument(path)) display();
   }
 
 
 void AdjProjDoc::OnFileSave() {
-String path;
 
-  if (!getSaveAsPathDlg(saveAsTitle, defFileName, defExt, defFilePat, path)) return;
+  if (!setIncSavePath(dsc)) return;   backupFile(3);   OnSaveDocument(path);
 
-  backupFile(path, 3);
-
-  OnSaveDocument(path);
+  iniFile.write(FileSection, FileName, path);
   }
 
 
@@ -108,15 +104,8 @@ void AdjProjDoc::serialize(Archive& ar) {
 // AdjProjDoc diagnostics
 
 #ifdef _DEBUG
-void AdjProjDoc::AssertValid() const
-{
-  CDocument::AssertValid();
-}
+void AdjProjDoc::AssertValid() const {CDocument::AssertValid();}
 
-void AdjProjDoc::Dump(CDumpContext& dc) const
-{
-  CDocument::Dump(dc);
-}
+void AdjProjDoc::Dump(CDumpContext& dc) const {CDocument::Dump(dc);}
 #endif //_DEBUG
-
 

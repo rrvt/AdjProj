@@ -13,10 +13,15 @@ class AdjProjDoc : public CDoc {
 
 DataSource  dataSource;
 
+#if 0
 String      saveAsTitle;                                            // Save As Parameters, examples:
 String      defFileName;                                            // _T("mumble.txt")
 String      defExt;                                                 // _T("txt")
 String      defFilePat;                                             // _T("*.txt")
+#endif
+
+PathDlgDsc  dsc;
+
 
 XMLparser   xml;
 
@@ -52,5 +57,4 @@ public:
   afx_msg void OnAdjust();
 
   afx_msg void OnFileSave();
-  afx_msg void OnOptions();
   };

@@ -1,7 +1,13 @@
 [SolutionInfo]
-Path=D:\Sources\AdjProj\AdjProj\
+Path=D:\Sources\AdjProj\AdjProj\AdjProj.sln
 Name=AdjProj
 Version=2.0
+[DefaultPath]
+NPaths=2
+DefKey0=Main.ftr
+Main.ftr.Path=D:\Sources\AdjProj\Release\
+DefKey1=Icon
+Icon.Path=D:\Sources\AdjProj\AdjProj.prj\res\
 [Icons]
 NoIcons=2
 [Icon00]
@@ -12,18 +18,13 @@ IconPath=D:\Sources\AdjProj\AdjProj.prj\res\AdjProj.ico
 IconID=Uninstall
 WixID=UninstallIcon.ico
 IconPath=D:\Sources\AdjProj\AdjProj.prj\res\Uninstall.ico
-[DefaultPath]
-NPaths=2
-DefKey0=Main.ftr
-Main.ftr.Path=D:\Sources\AdjProj\Release\
-DefKey1=Icon
-Icon.Path=D:\Sources\AdjProj\AdjProj.prj\res\
 [Product]
 ProductName=Adjust VS17 Project File
 Company=Bob -- K6RWY
 WixName=AdjProj
-WixVersion=1.1.0.0
+WixVersion=1.1.11.0
 UpgradeGUID=EA4C65D3-11DC-4DE0-A8D0-78C49E2CC1C6
+UpgradeCode=EA4C65D3-11DC-4DE0-A8D0-78C49E2CC1C6
 SaveVerAllowed=0
 LicenseRequired=0
 LicensePath=D:\Sources\AdjProj\AdjProj\

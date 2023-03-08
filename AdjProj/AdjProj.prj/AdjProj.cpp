@@ -6,7 +6,6 @@
 #include "AboutDlg.h"
 #include "GetPathDlg.h"
 #include "IniFile.h"
-#include "Options.h"
 #include "Resources.h"
 #include "AdjProjDoc.h"
 #include "AdjProjView.h"
@@ -19,7 +18,7 @@ IniFile iniFile;
 // AdjProj
 
 BEGIN_MESSAGE_MAP(AdjProj, CWinAppEx)
-  ON_COMMAND(ID_APP_ABOUT,        &AdjProj::OnAppAbout)
+  ON_COMMAND(ID_App_About,        &AdjProj::OnAppAbout)
   ON_COMMAND(ID_FILE_PRINT_SETUP, &CWinAppEx::OnFilePrintSetup)
   ON_COMMAND(ID_Help,             &OnHelp)
 END_MESSAGE_MAP()
@@ -64,8 +63,6 @@ BOOL AdjProj::InitInstance() {
   if (!ProcessShellCommand(cmdInfo)) return FALSE;
 
   setAppName(_T("AdjProj"));  setTitle(_T("Adjust Project Files"));
-
-  options.load();    view()->setOrientation(options.orient);
 
   view()->setFont(_T("Courier New"), 12.0);
 
