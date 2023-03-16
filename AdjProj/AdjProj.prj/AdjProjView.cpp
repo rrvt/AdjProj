@@ -19,7 +19,7 @@ BEGIN_MESSAGE_MAP(AdjProjView, CScrView)
 END_MESSAGE_MAP()
 
 
-AdjProjView::AdjProjView() noexcept : dspNote(dMgr.getNotePad()), prtNote(pMgr.getNotePad()) {
+AdjProjView::AdjProjView() noexcept {
 
 ResourceData res;
 String       pn;
@@ -28,7 +28,6 @@ String       pn;
 
 
 void AdjProjView::onOptions() {
-#if 1
 OptionsDlg dlg;
 
   if (printer.name.isEmpty()) printer.load(0);
@@ -40,13 +39,6 @@ OptionsDlg dlg;
 
     prtNote.prtrOrietn = printer.toOrient(dlg.orient);   saveNoteOrietn();
     }
-#else
-OptionsDlg dlg;
-
-  if (printer.name.isEmpty()) printer.load(0);
-
-  if (dlg.DoModal() == IDOK) pMgr.setFontScale(printer.scale);
-#endif
   }
 
 

@@ -11,10 +11,7 @@ class AdjProjDoc;
 
 class AdjProjView : public CScrView {
 
-NotePadRpt dspNote;
-NotePadRpt prtNote;
-
-protected: // create from serialization only
+protected:
 
   AdjProjView() noexcept;
   DECLARE_DYNCREATE(AdjProjView)
