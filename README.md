@@ -21,6 +21,10 @@ Copy an vcxproj file into the data directory and practice with it.
 
 ## Updates
 
+### Update 3/31/23
+
+Add orientation dialog to application.
+
 ### Update 3/15/23
 
 Complete move of orientation to reports.

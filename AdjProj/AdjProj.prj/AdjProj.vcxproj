@@ -109,7 +109,7 @@
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <BasicRuntimeChecks />
+      <BasicRuntimeChecks/>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
@@ -139,7 +139,6 @@
     <ClInclude Include="AdjProj.h" />
     <ClInclude Include="AdjProjDoc.h" />
     <ClInclude Include="AdjProjView.h" />
-    <ClInclude Include="..\..\Library\Extras\ExtraResource.h" />
     <ClInclude Include="MainFrame.h" />
     <ClInclude Include="..\..\Library\Extras\OptionsDlg.h" />
     <ClInclude Include="Resource.h" />
@@ -147,6 +146,8 @@
     <ClInclude Include="Store.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="XMLparser.h" />
+  <ClInclude Include="..\..\Library\Extras\ResourceExtra.h" />
+    <ClInclude Include="..\..\Library\Extras\RptOrientDlgOne.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Library\Extras\AboutDlg.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Store.cpp" />
     <ClCompile Include="XMLparser.cpp" />
+  <ClCompile Include="..\..\Library\Extras\RptOrientDlgOne.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="AdjProj.rc" />
@@ -169,6 +171,7 @@
     <None Include="..\README.md" />
     <None Include="res\Toolbar10.bmp" />
     <None Include="res\Uninstall.ico" />
+  <None Include="..\..\Library\Extras\RptOrientOne.rc2" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\AdjProj.ico" />

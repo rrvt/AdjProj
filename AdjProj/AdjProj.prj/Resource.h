@@ -2,7 +2,6 @@
 // Microsoft Visual C++ generated include file.
 // Used by AdjProj.rc
 
-#include "ExtraResource.h"
 
 #define IDR_MAINFRAME         100
 

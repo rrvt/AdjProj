@@ -6,12 +6,12 @@
 #include "AdjProj.h"
 #include "AdjProjView.h"
 #include "CopyFile.h"
-#include "ExtraResource.h"
 #include "filename.h"
 #include "filesrch.h"
 #include "MessageBox.h"
 #include "NotePad.h"
 #include "Resource.h"
+#include "ResourceExtra.h"
 #include "Store.h"
 
 
