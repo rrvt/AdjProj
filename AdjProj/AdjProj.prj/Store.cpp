@@ -55,7 +55,7 @@ int       n = items.end();
 int       i;
 XMLbaseP* rcdP;
 
-  for (i = 0; i < n; i++) {rcdP = items.getRcdPtr(i);   if (rcdP) rcdP->clear();}
+  for (i = 0; i < n; i++) {rcdP = items.getDatumPtr(i);   if (rcdP) rcdP->clear();}
 
   upLink = 0; loopX = 0; name.clear(); startTag.clear(); endTag.clear();
   }

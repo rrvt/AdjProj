@@ -71,7 +71,7 @@ String line;
   };
 
 
-typedef DatumPtrT<XMLbase> XMLbasePB;
+typedef DatumPtrT<XMLbase, String> XMLbasePB;
 
 
 class XMLbaseP : public XMLbasePB {
@@ -98,7 +98,7 @@ String   name;
 String   startTag;                                // BeginTag ("<tagName>") of element
 String   endTag;                                  // EndTag ("</tagName>") of element
 
-ExpandableP<XMLbase, XMLbaseP, 2> items;        // A list of elements (BeginTag ... EndTag
+ExpandableP<XMLbase, String, XMLbaseP, 2> items;        // A list of elements (BeginTag ... EndTag
 
   Element() : XMLbase(), upLink(0), loopX(0) { }
   Element(Element& d) {*this = d;}

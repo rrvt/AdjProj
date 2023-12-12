@@ -21,6 +21,10 @@ Copy an vcxproj file into the data directory and practice with it.
 
 ## Updates
 
+### Update 12/11/23
+
+Improve ExpandableP (modify) and associated changes.
+
 ### Update 6/25/23
 
 Library Update.
