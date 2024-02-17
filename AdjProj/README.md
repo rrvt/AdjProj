@@ -21,6 +21,11 @@ Copy an vcxproj file into the data directory and practice with it.
 
 ## Updates
 
+### Update 2/16/24
+
+Reorganized the Library so that it compiles once into Debug and Release directories under the Library
+directory.
+
 ### Update 12/11/23
 
 Improve ExpandableP (modify) and associated changes.
