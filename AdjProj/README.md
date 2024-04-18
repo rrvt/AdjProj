@@ -21,6 +21,10 @@ Copy an vcxproj file into the data directory and practice with it.
 
 ## Updates
 
+### Update 4/18/24
+
+Improved the way Toolbars and Window Position and size are handled.
+
 ### Update 2/16/24
 
 Reorganized the Library so that it compiles once into Debug and Release directories under the Library

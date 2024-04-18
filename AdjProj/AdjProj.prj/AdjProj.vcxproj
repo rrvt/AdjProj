@@ -139,6 +139,7 @@
     <ClInclude Include="AdjProjView.h" />
     <ClInclude Include="MainFrame.h" />
     <ClInclude Include="..\..\Library\Extras\OptionsDlg.h" />
+    <ClInclude Include="MyToolBar.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Store.h" />
@@ -154,6 +155,7 @@
     <ClCompile Include="AdjProjView.cpp" />
     <ClCompile Include="MainFrame.cpp" />
     <ClCompile Include="..\..\Library\Extras\OptionsDlg.cpp" />
+    <ClCompile Include="MyToolBar.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Store.cpp" />
     <ClCompile Include="XMLparser.cpp" />
