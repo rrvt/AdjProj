@@ -28,6 +28,8 @@
   <Icon     Id="AdjProjIcon.ico" SourceFile="$(var.SolutionDir)..\AdjProj.prj\res\AdjProj.ico"/>
   <Icon     Id="UninstallIcon.ico"
                                   SourceFile="$(var.SolutionDir)..\AdjProj.prj\res\Uninstall.ico"/>
+  <Icon     Id="LicenseMIT_Icon.exe"
+                              SourceFile="$(var.SolutionDir)..\..\Library\License\MITLicense.ico"/>
   <Property Id="ARPPRODUCTICON"  Value="UninstallIcon.ico" />
 
   <Feature Id="ProductFeatures" Title="Main Product" Level="1" >
@@ -43,7 +45,7 @@
     <ComponentRef Id="Help.cmp"/>
   </ComponentGroup>
   <ComponentGroup Id="License.ftr">
-    <ComponentRef Id="License.cmp"/>
+    <ComponentRef Id="MITLicense.rtf.cmp"/>
   </ComponentGroup>
   <ComponentGroup Id="Uninstall_Adjust_VS17_Project.ftr">
     <ComponentRef Id="Uninstall_Adjust_VS17_Project.cmp"/>
@@ -102,22 +104,25 @@
 </Fragment>
 
 <Fragment>
-  <Component Id="License.cmp" Guid="5FD47D90-6FB5-4EAD-98D6-3956A00AD145"
+  <Component Id="MITLicense.rtf.cmp" Guid="5FD47D90-6FB5-4EAD-98D6-3956A00AD145"
                                                                    Directory="AdjProj_License.pff">
-    <File Id="License.cmp"
+    <File Id="MITLicense.rtf.cmp"
                 Source="$(var.SolutionDir)..\..\Library\License\MITLicenseFile.rtf" KeyPath="yes"/>
 
-    <Shortcut Id               = "License.shc"
-              Name             = "License"
+    <Shortcut Id               = "MITLicense.rtf.shc"
+              Name             = "MITLicense.rtf"
+              Description      = "MIT License"
               Advertise        = "yes"
+              Directory        = "AdjProj.pmf"
               WorkingDirectory = "AdjProj_License.pff"
+              Icon             = "LicenseMIT_Icon.exe"
               />
   </Component>
 </Fragment>
 
 <Fragment>
   <Component Id="Uninstall_Adjust_VS17_Project.cmp"
-                               Guid="37EE9E8C-C5E3-49F8-90B9-6F37132A35C3" Directory="AdjProj.pmf">
+                               Guid="DF46F96B-6A05-4C76-B96E-06A07DDFE3F0" Directory="AdjProj.pmf">
 
     <Shortcut Id               = "UninstallAdjustVS17Project.shc"
               Name             = "Uninstall Adjust VS17 Project"

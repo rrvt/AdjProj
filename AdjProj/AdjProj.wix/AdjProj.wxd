@@ -1,20 +1,20 @@
 [SolutionInfo]
 RootPath=D:\Sources\AdjProj\
-Path=D:\Sources\AdjProj\AdjProj\.sln
-Name=
+Path=D:\Sources\AdjProj\AdjProj\AdjProj.sln
+Name=AdjProj
 Version=2.100000
 [DefaultPath]
 NPaths=4
 DefKey0=Main.ftr
 Main.ftr.Path=D:\Sources\AdjProj\Release\
 DefKey1=Icon
-Icon.Path=D:\Sources\AdjProj\AdjProj.prj\res\
+Icon.Path=D:\Sources\Library\License\
 DefKey2=License
 License.Path=D:\Sources\Library\License\
 DefKey3=License.ftr
 License.ftr.Path=D:\Sources\Library\License\
 [Icons]
-NoIcons=2
+NoIcons=3
 [Icon00]
 IconID=AdjProj
 WixID=AdjProjIcon.ico
@@ -23,11 +23,15 @@ IconPath=D:\Sources\AdjProj\AdjProj.prj\res\AdjProj.ico
 IconID=Uninstall
 WixID=UninstallIcon.ico
 IconPath=D:\Sources\AdjProj\AdjProj.prj\res\Uninstall.ico
+[Icon02]
+IconID=LicenseMIT
+WixID=LicenseMIT_Icon.exe
+IconPath=D:\Sources\Library\License\MITLicense.ico
 [Product]
 ProductName=Adjust VS17 Project File
 Company=Bob -- K6RWY
 WixName=AdjProj
-WixVersion=1.2.0.0
+WixVersion=1.2.2.0
 UpgradeCode=EA4C65D3-11DC-4DE0-A8D0-78C49E2CC1C6
 SaveVerAllowed=0
 LicenseRequired=1
@@ -80,11 +84,13 @@ Guid=3A3068B1-C4BD-4134-88B2-3993D49FFFAB
 [Ftr01]
 FeatureID=License
 ProgramID=AdjProj\License
-StartMenuID=
-CurSel=License
+StartMenuID=AdjProj
+CurSel=MITLicense.rtf
 NoComponents=1
 [Ftr01Cmp00]
-ID=License
+ID=MITLicense.rtf
 Path=D:\Sources\Library\License\MITLicenseFile.rtf
 Guid=5FD47D90-6FB5-4EAD-98D6-3956A00AD145
+Description=MIT License
+IconID=LicenseMIT
 IsStartMenu=1
