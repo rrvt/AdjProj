@@ -35,6 +35,7 @@ public:
   void output(Archive& ar) {store.output(ar);}
 
 private:
+
   bool    readLine(Archive& ar, String& s);
   XMLType getType(String& s, String& elementName);
   };

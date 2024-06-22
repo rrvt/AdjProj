@@ -6,8 +6,6 @@
 #include "CbxItem.h"
 #include "ToolBarDim.h"
 
-#include "MessageBox.h"
-
 
 TBCbxMenu& TBCbxMenu::install(int idr, TCchar* caption) {
 CMenu      menu;
@@ -18,7 +16,7 @@ Cstring    txt;
   if (!menu.LoadMenu(idr)) return *(TBCbxMenu*)0;
 
     for (i = 0, maxChars = 0, n = menu.GetMenuItemCount(); i < n; i++)
-                       {menu.GetMenuString(i, txt, MF_BYPOSITION);   addItem(txt, menu.GetMenuItemID(i));}
+                {menu.GetMenuString(i, txt, MF_BYPOSITION);   addItem(txt, menu.GetMenuItemID(i));}
 
   menu.DestroyMenu();   return finInstall(caption);
   }
@@ -28,7 +26,7 @@ TBCbxMenu& TBCbxMenu::install(const CbxItem cbxItem[], int n, TCchar* caption) {
 int     i;
 
   for (i = 0, maxChars = 0; i < n; i++)
-                                       {const CbxItem& item = cbxItem[i];   addItem(item.txt, item.data);}
+                                {const CbxItem& item = cbxItem[i];   addItem(item.txt, item.data);}
 
   return finInstall(caption);
   }
@@ -58,20 +56,13 @@ bool TBCbxMenu::setCaption() {
 
   if (!getActual()) return false;
 
-#if 1
   actual->SetText(caption);   return true;
-#else
-CMFCToolBarComboBoxButton* cbxBtn = GetByCmd(id);   if (!cbxBtn) return false;
-CEdit*                     edit   = cbxBtn->GetEditCtrl();
-
-  edit->SetReadOnly();   edit->ModifyStyle(0, ES_CENTER);   edit->SetWindowText(caption);   return true;
-#endif
   }
 
 
 uint TBCbxMenu::getCmdId() {
 CMFCToolBarComboBoxButton* cbxBtn = GetByCmd(id);   if (!cbxBtn) return 0;
-int i = cbxBtn->GetCurSel();
+int                        i      = cbxBtn->GetCurSel();
 
   return i >= 0 ? cbxBtn->GetItemData(i) : 0;
   }

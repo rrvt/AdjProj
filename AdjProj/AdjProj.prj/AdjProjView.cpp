@@ -62,8 +62,8 @@ void AdjProjView::onDisplayOutput() {dspNote.display(*this);}
 
 
 // The footer is injected into the printed output, so the output goes directly to the device.
-// The output streaming functions are very similar to NotePad's streaming functions so it should not
-// be a great hardship to construct a footer.
+// The output streaming functions are very similar to NotePad's streaming functions so it should
+// not be a great hardship to construct a footer.
 
 void AdjProjView::printFooter(DevBase& dev, int pageNo) {prtNote.prtFooter(dev, pageNo);}
 
@@ -89,15 +89,12 @@ void AdjProjView::OnSetFocus(CWnd* pOldWnd) {
   }
 
 
-
-
 // AdjProjView diagnostics
 
 #ifdef _DEBUG
-void AdjProjView::AssertValid() const {CScrollView::AssertValid();}
-
+void AdjProjView::AssertValid() const          {CScrollView::AssertValid();}
 void AdjProjView::Dump(CDumpContext& dc) const {CScrollView::Dump(dc);}
 
 AdjProjDoc* AdjProjView::GetDocument() const          // non-debug version is inline
-            {ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(AdjProjDoc))); return (AdjProjDoc*)m_pDocument;}
+       {ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(AdjProjDoc))); return (AdjProjDoc*)m_pDocument;}
 #endif //_DEBUG

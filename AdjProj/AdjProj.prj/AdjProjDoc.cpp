@@ -104,8 +104,7 @@ void AdjProjDoc::serialize(Archive& ar) {
 // AdjProjDoc diagnostics
 
 #ifdef _DEBUG
-void AdjProjDoc::AssertValid() const {CDocument::AssertValid();}
-
+void AdjProjDoc::AssertValid() const          {CDocument::AssertValid();}
 void AdjProjDoc::Dump(CDumpContext& dc) const {CDocument::Dump(dc);}
 #endif //_DEBUG
 

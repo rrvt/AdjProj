@@ -61,7 +61,8 @@ XMLbaseP* rcdP;
   }
 
 
-// The free node included in the template doesn't work for multiple node sizes.  Leaves lost memory, UGH!
+// The free node included in the template doesn't work for multiple node sizes.  Leaves lost
+// memory, UGH!
 
 void XMLbaseP::clear() {
 
@@ -182,8 +183,6 @@ Attrib*  at;
       }
     }
   }
-
-
 
 
 bool XMLbase::getFileName(String& line) {

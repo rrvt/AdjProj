@@ -47,6 +47,7 @@ public:
 
 
 #ifndef _DEBUG  // debug version in AdjProjView.cpp
-inline AdjProjDoc* AdjProjView::GetDocument() const {return reinterpret_cast<AdjProjDoc*>(m_pDocument);}
+inline AdjProjDoc* AdjProjView::GetDocument() const
+                                              {return reinterpret_cast<AdjProjDoc*>(m_pDocument);}
 #endif
 

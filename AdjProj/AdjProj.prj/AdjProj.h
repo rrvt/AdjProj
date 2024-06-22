@@ -4,7 +4,6 @@
 #include "CApp.h"
 #include "IniFile.h"
 #include "MainFrame.h"
-//#include "resource.h"       // main symbols
 
 
 class AdjProjDoc;
@@ -15,10 +14,8 @@ class AdjProjView;
 // See AdjProj.cpp for the implementation of this class
 
 class AdjProj : public CApp {
-String       appID;
 
-//AdjProjDoc*  doc;
-//AdjProjView* view;
+String appID;
 
 public:
 

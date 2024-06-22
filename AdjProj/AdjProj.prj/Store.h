@@ -67,7 +67,7 @@ String line;
   void   output(Archive& ar) {ar.write(line); ar.crlf();}
 
   Attrib& operator= (Attrib& a)
-                            {line = a.line; xmlType  = a.xmlType;   sortName = a.sortName; return *this;}
+                      {line = a.line; xmlType  = a.xmlType;   sortName = a.sortName; return *this;}
   };
 
 
@@ -95,8 +95,8 @@ int      loopX;
 public:
 
 String   name;
-String   startTag;                                // BeginTag ("<tagName>") of element
-String   endTag;                                  // EndTag ("</tagName>") of element
+String   startTag;                                      // BeginTag ("<tagName>") of element
+String   endTag;                                        // EndTag ("</tagName>") of element
 
 ExpandableP<XMLbase, String, XMLbaseP, 2> items;        // A list of elements (BeginTag ... EndTag
 
@@ -173,11 +173,4 @@ String xmlVersion;
 extern Store store;
 
 
-
-
-
-
-//  bool operator== (TCchar* name) {return  _tcsicmp(sortName, name) == 0;}
-//  bool operator<  (TCchar* name) {return  _tcsicmp(sortName, name) <  0;}
-//  bool operator>  (TCchar* name) {return  _tcsicmp(sortName, name) >  0;}
 

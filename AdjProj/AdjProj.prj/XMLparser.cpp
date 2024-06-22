@@ -65,7 +65,7 @@ XMLType typ[10];
   if (i == 1) {name = names[0]; return typ[0];}
 
   if (i == 2 && typ[0] == StartTag && typ[1] == EndTag && names[0] == names[1])
-                                                                    {name = names[0]; return ElementTag;}
+                                                              {name = names[0]; return ElementTag;}
   if (i > 2) {messageBox(_T("More than two tags in line"));
   }
 
