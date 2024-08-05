@@ -28,10 +28,10 @@ IconID=LicenseMIT
 WixID=LicenseMIT_Icon.exe
 IconPath=D:\Sources\Library\License\MITLicense.ico
 [Product]
-ProductName=Adjust VS17 Project File
+ProductName=Adjust VS Project File
 Company=Bob -- K6RWY
 WixName=AdjProj
-WixVersion=1.2.2.0
+WixVersion=1.2.3.0
 UpgradeCode=EA4C65D3-11DC-4DE0-A8D0-78C49E2CC1C6
 SaveVerAllowed=0
 LicenseRequired=1
@@ -61,15 +61,15 @@ Name=AdjProj
 HasChildren=0
 [Features]
 Count=2
-CurSel=License
+CurSel=Main
 [Ftr00]
 FeatureID=Main
 ProgramID=AdjProj
 StartMenuID=AdjProj
-CurSel=Adjust VS17 Project
+CurSel=Adjust VS Project
 NoComponents=2
 [Ftr00Cmp00]
-ID=Adjust VS17 Project
+ID=Adjust VS Project
 Path=D:\Sources\AdjProj\Release\AdjProj.exe
 Guid=F136A420-01AD-4974-BFBD-C30742F18ADF
 Description=Adjust VS17 Project File

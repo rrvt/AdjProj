@@ -21,6 +21,10 @@ Copy an vcxproj file into the data directory and practice with it.
 
 ## Updates
 
+### Update 8/4/24
+
+Library update.
+
 ### Update 6/22/24
 
 Added an icon to the MIT License rtf file.
