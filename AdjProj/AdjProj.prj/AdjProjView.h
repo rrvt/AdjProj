@@ -3,7 +3,7 @@
 
 #pragma once
 #include "CScrView.h"
-#include "NotePadRpt.h"
+#include "ReportNtPd.h"
 
 
 class AdjProjDoc;
@@ -18,16 +18,22 @@ protected:
 
 public:
 
-  virtual ~AdjProjView() { }
+  virtual           ~AdjProjView() { }
 
-  virtual void onPreparePrinting(CPrintInfo* info) {prtNote.onPreparePrinting(info);}
-  virtual void onBeginPrinting();
-  virtual void onDisplayOutput();
+  virtual void       initNoteOrietn() { }
+  virtual void       saveNoteOrietn() { }
+  virtual void       initRptOrietn()  { }
+  virtual void       saveRptOrietn()  { }
+  virtual PrtrOrient getOrientation() {return prtNote.prtrOrietn;}
 
-  virtual void printFooter(DevBase& dev, int pageNo);
-  virtual void OnEndPrinting(CDC* pDC, CPrintInfo* pInfo);
+  virtual void       onDisplayOutput();
+  virtual void       onPreparePrinting(CPrintInfo* info) {prtNote.onPreparePrinting(info);}
+  virtual void       onBeginPrinting();
 
-  AdjProjDoc* GetDocument() const;
+  virtual void       printFooter(DevStream& dev, int pageNo);
+  virtual void       OnEndPrinting(CDC* pDC, CPrintInfo* pInfo);
+
+  AdjProjDoc*        GetDocument() const;
 
 public:
 

@@ -64,7 +64,7 @@ String line;
   bool   getFileName() {return XMLbase::getFileName(line);}
 
   void   display()           {notePad << line << nCrlf;}
-  void   output(Archive& ar) {ar.write(line); ar.crlf();}
+  void   output(Archive& ar) {ar << line << aCrlf;}
 
   Attrib& operator= (Attrib& a)
                       {line = a.line; xmlType  = a.xmlType;   sortName = a.sortName; return *this;}

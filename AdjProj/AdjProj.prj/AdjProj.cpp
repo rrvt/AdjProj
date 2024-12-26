@@ -6,7 +6,7 @@
 #include "AboutDlg.h"
 #include "GetPathDlg.h"
 #include "IniFile.h"
-#include "Resources.h"
+#include "ResourceData.h"
 #include "AdjProjDoc.h"
 #include "AdjProjView.h"
 

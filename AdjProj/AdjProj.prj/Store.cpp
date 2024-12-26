@@ -151,7 +151,7 @@ void Element::output(Archive& ar) {
 int n = items.end();
 int i;
 
-  if (!startTag.isEmpty()) {ar.write(startTag); ar.crlf();}
+  if (!startTag.isEmpty()) {ar << startTag << aCrlf;}
 
   for (i = 0; i < n; i++) {
     XMLbase* p = items[i].p;    if (!p) return;
@@ -164,7 +164,7 @@ int i;
       }
     }
 
-  if (!startTag.isEmpty()) {ar.write(endTag); ar.crlf();}
+  if (!startTag.isEmpty()) {ar << endTag << aCrlf;}
   }
 
 
