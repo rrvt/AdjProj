@@ -12,7 +12,7 @@
 
 
 AdjProj theApp;                       // The one and only AdjProj object
-IniFile iniFile;
+IniFile iniFile(theApp);
 
 
 // AdjProj
@@ -30,7 +30,7 @@ BOOL AdjProj::InitInstance() {
 
   CWinAppEx::InitInstance();
 
-  iniFile.setAppDataPath(m_pszHelpFilePath, *this);
+  iniFile.setAppDataPath(m_pszHelpFilePath);
 
   notePad.clear();
 
@@ -69,6 +69,11 @@ BOOL AdjProj::InitInstance() {
   // The one and only window has been initialized, so show and update it
 
   m_pMainWnd->ShowWindow(SW_SHOW);   m_pMainWnd->UpdateWindow();   return TRUE;
+  }
+
+
+int AdjProj::ExitInstance() {
+  store.~Store();   return CApp::ExitInstance();
   }
 
 

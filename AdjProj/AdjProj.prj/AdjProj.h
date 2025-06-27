@@ -24,6 +24,7 @@ String version;
                AdjProj() noexcept : CApp(this) { }
 
   virtual BOOL InitInstance();
+  virtual int  ExitInstance();
 
   AdjProjDoc*  doc()  {return (AdjProjDoc*)  CApp::getDoc();}
   AdjProjView* view() {return (AdjProjView*) CApp::getView();}

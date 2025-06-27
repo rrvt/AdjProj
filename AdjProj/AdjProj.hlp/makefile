@@ -7,7 +7,7 @@ AdjProj.chm : *.htm AdjProj.hhp AdjProj.hhc App.css
 Clean.cln    :
   @echo "Cleaning"
   cd $(MAKEDIR)
-  del /F AdjProj.chm
+  if exist AdjProj.chm del /F AdjProj.chm
 
 
 Release/AdjProj.chm : AdjProj.chm
@@ -16,7 +16,7 @@ Release/AdjProj.chm : AdjProj.chm
 
 Release/Clean.cln    : Clean.cln
   cd $(MAKEDIR)\..\Release
-  del AdjProj.chm
+  if exist AdjProj.chm del /F AdjProj.chm
   cd $(MAKEDIR)
 
 
@@ -26,7 +26,7 @@ Debug/AdjProj.chm : AdjProj.chm
 
 Debug/Clean.cln    : Clean.cln
   cd $(MAKEDIR)\..\Debug
-  del AdjProj.chm
+  if exist AdjProj.chm del /F AdjProj.chm
   cd $(MAKEDIR)
 
 
