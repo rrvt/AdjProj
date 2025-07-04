@@ -21,6 +21,10 @@ Copy an vcxproj file into the data directory and practice with it.
 
 ## Updates
 
+### Update 7/3/25
+
+Factored IniFile into three parts.
+
 ### Update 6/26/25
 
 Improve memory leak debugging.

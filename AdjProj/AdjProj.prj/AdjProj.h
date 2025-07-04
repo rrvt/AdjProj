@@ -2,7 +2,7 @@
 
 #pragma once
 #include "CApp.h"
-#include "IniFile.h"
+#include "IniFileEx.h"
 #include "MainFrame.h"
 
 

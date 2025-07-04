@@ -5,14 +5,14 @@
 #include "AdjProj.h"
 #include "AboutDlg.h"
 #include "GetPathDlg.h"
-#include "IniFile.h"
+#include "IniFileEx.h"
 #include "ResourceData.h"
 #include "AdjProjDoc.h"
 #include "AdjProjView.h"
 
 
-AdjProj theApp;                       // The one and only AdjProj object
-IniFile iniFile(theApp);
+AdjProj   theApp;                         // The one and only AdjProj object
+IniFileEx iniFile(theApp);
 
 
 // AdjProj
