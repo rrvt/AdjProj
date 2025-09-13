@@ -21,6 +21,10 @@ Copy an vcxproj file into the data directory and practice with it.
 
 ## Updates
 
+### Updaate 9/13/25
+
+Update XMLibrary to be compatible with new ExpandableP.
+
 ### Update 7/3/25
 
 Factored IniFile into three parts.

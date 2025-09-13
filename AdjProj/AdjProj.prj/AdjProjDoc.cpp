@@ -12,7 +12,6 @@
 #include "NotePad.h"
 #include "Resource.h"
 #include "ResourceExtra.h"
-#include "Store.h"
 
 
 static TCchar* FileSection = _T("FileSection");
@@ -24,9 +23,9 @@ static TCchar* FileName    = _T("Name");
 IMPLEMENT_DYNCREATE(AdjProjDoc, CDocument)
 
 BEGIN_MESSAGE_MAP(AdjProjDoc, CDocument)
-  ON_COMMAND(ID_FILE_OPEN,       &OnFileOpen)
-  ON_COMMAND(ID_FILE_SAVE,       &OnFileSave)
-  ON_COMMAND(ID_Adjust,          &OnAdjust)
+  ON_COMMAND(ID_FILE_OPEN,       &onFileOpen)
+  ON_COMMAND(ID_FILE_SAVE,       &onFileSave)
+  ON_COMMAND(ID_Adjust,          &onAdjust)
 END_MESSAGE_MAP()
 
 
@@ -42,36 +41,68 @@ AdjProjDoc::~AdjProjDoc() { }
 // AdjProjDoc commands
 
 
-void AdjProjDoc::OnAdjust() {
-Element* p;
-Element* res;
-Element* non;
-Element* img;
+void AdjProjDoc::onAdjust() {
+XMLbase* res;
+XMLbase* non;
+XMLbase* img;
 
-  p   = store.find(_T("ClInclude Include")); if (p)   {  p->setSortNames();   p->sort();}
-  p   = store.find(_T("ClCompile Include")); if (p)   {  p->setSortNames();   p->sort();}
-  non = store.find(_T("None Include"));      if (non) {non->setSortNames(); non->sort();}
-  img = store.find(_T("Image Include"));     if (img) {img->setSortNames(); img->sort();}
-  res = store.find(_T("ResourceCompile Include"));
-                                  if (res && (non || img)) {store.reorder(res, non, img);}
+notePad.clear();
+
+#if 1
+  onAdjust(_T("ClInclude Include"));
+
+  onAdjust(_T("ClCompile Include"));
+  non = onAdjust(_T("None Include"));
+  img = onAdjust(_T("Image Include"));
+  res = onAdjust(_T("ResourceCompile Include"));
+
+  xmlStore.reorder(res, non, img);
+#else
+  p   = xmlStore.find(_T("ClInclude Include"));
+
+  if (p)   {  p->setSortNames();   p->sort();}
+  p   = xmlStore.find();
+
+  if (p)   {  p->setSortNames();   p->sort();}
+
+  non = xmlStore.find(_T("None Include"));
+
+  if (non) {non->setSortNames(); non->sort();}
+
+  img = xmlStore.find(_T("Image Include"));
+
+  if (img) {img->setSortNames(); img->sort();}
+
+  res = xmlStore.find(_T("ResourceCompile Include"));
+#endif
+
   display();
+
+  invalidate();
+  }
+
+
+XMLbase* AdjProjDoc::onAdjust(TCchar* txt) {
+XMLbase* p = xmlStore.findParent(txt);    if (!p) return 0;
+
+  p->setSortNames();   p->sort();   return p;
   }
 
 
 void AdjProjDoc::display() {
 int i;
 
-  notePad.clear();  for (i = 2; i < 50; i += 2) notePad << nSetTab(i);   store.display();
+  notePad.clear();  for (i = 2; i < 50; i += 2) notePad << nSetTab(i);
 
-  invalidate();
+  xmlStore.display();
   }
 
 
 
-void AdjProjDoc::OnFileOpen() {
+void AdjProjDoc::onFileOpen() {
 String name;
 
-  store.clear();
+  xmlStore.clear();
 
   iniFile.read(FileSection, FileName, name);
 
@@ -82,10 +113,12 @@ String name;
   dsc.name = path;   iniFile.write(FileSection, FileName, path);
 
   if (OnOpenDocument(path)) display();
+
+  invalidate();
   }
 
 
-void AdjProjDoc::OnFileSave() {
+void AdjProjDoc::onFileSave() {
 
   if (!setIncSavePath(dsc)) return;   backupFile(3);   OnSaveDocument(path);
 
@@ -96,8 +129,8 @@ void AdjProjDoc::OnFileSave() {
 // AdjProjDoc serialization
 
 void AdjProjDoc::serialize(Archive& ar) {
-  if (ar.isStoring()) xml.output(ar);
-  else                xml.input(ar);
+  if (ar.isStoring()) xmlStore.output(ar);
+  else                xmlStore.load(ar);
   }
 
 

@@ -60,7 +60,7 @@
       <Optimization>MaxSpeed</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)..\..\Library\DocView\;D:\sources\Library\Library\;D:\sources\Library\Extras\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)..\..\Library\DocView\;$(SolutionDir)..\..\Library\XMLibrary\;$(SolutionDir)..\..\Library\Library\;$(SolutionDir)..\..\Library\Extras\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <BasicRuntimeChecks>
@@ -69,10 +69,11 @@
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <SupportJustMyCode>false</SupportJustMyCode>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>Htmlhelp.lib;Library.lib;DocView.lib</AdditionalDependencies>
+      <AdditionalDependencies>Htmlhelp.lib;Library.lib;DocView.lib;XMLibrary.lib</AdditionalDependencies>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
@@ -100,7 +101,7 @@
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)..\..\Library\DocView\;D:\sources\Library\Library\;D:\sources\Library\Extras\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)..\..\Library\DocView\;$(SolutionDir)..\..\Library\XMLibrary\;$(SolutionDir)..\..\Library\Library\;$(SolutionDir)..\..\Library\Extras\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>None</DebugInformationFormat>
       <WholeProgramOptimization>true</WholeProgramOptimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
@@ -114,7 +115,7 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>Htmlhelp.lib;Library.lib;DocView.lib</AdditionalDependencies>
+      <AdditionalDependencies>Htmlhelp.lib;Library.lib;DocView.lib;XMLibrary.lib</AdditionalDependencies>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
       <AdditionalLibraryDirectories>$(Solutiondir)..\..\Library\$(Configuration)\</AdditionalLibraryDirectories>
@@ -137,14 +138,13 @@
     <ClInclude Include="AdjProj.h" />
     <ClInclude Include="AdjProjDoc.h" />
     <ClInclude Include="AdjProjView.h" />
+    <ClInclude Include="Layers.h" />
     <ClInclude Include="MainFrame.h" />
     <ClInclude Include="..\..\Library\Extras\OptionsDlg.h" />
     <ClInclude Include="MyToolBar.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Store.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="XMLparser.h" />
     <ClInclude Include="..\..\Library\Extras\ResourceExtra.h" />
     <ClInclude Include="..\..\Library\Extras\RptOrientDlgOne.h" />
   </ItemGroup>
@@ -153,12 +153,11 @@
     <ClCompile Include="AdjProj.cpp" />
     <ClCompile Include="AdjProjDoc.cpp" />
     <ClCompile Include="AdjProjView.cpp" />
+    <ClCompile Include="Layers.cpp" />
     <ClCompile Include="MainFrame.cpp" />
     <ClCompile Include="..\..\Library\Extras\OptionsDlg.cpp" />
     <ClCompile Include="MyToolBar.cpp" />
     <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="Store.cpp" />
-    <ClCompile Include="XMLparser.cpp" />
     <ClCompile Include="..\..\Library\Extras\RptOrientDlgOne.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -172,9 +171,21 @@
     <None Include="res\Uninstall.ico" />
     <None Include="..\..\Library\Extras\RptOrientOne.rc2" />
     <None Include="res\Toolbar.bmp" />
+    <None Include="..\Data\MakeApp.vcxproj" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\AdjProj.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Library\DocView\DocView.vcxproj">
+      <Project>{d0fdd57b-5315-4e31-b0c9-fcfb7a0285f6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Library\Library\Library.vcxproj">
+      <Project>{cf57f3ec-d3db-4469-8519-3f9d73785d9b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Library\XMLibrary\XMLibrary.vcxproj">
+      <Project>{3c86ec1c-84c6-4716-9294-4ef3efe3381a}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

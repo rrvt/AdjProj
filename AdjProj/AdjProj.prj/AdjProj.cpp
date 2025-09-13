@@ -73,7 +73,7 @@ BOOL AdjProj::InitInstance() {
 
 
 int AdjProj::ExitInstance() {
-  store.~Store();   return CApp::ExitInstance();
+  /*store.~Store();*/   return CApp::ExitInstance();
   }
 
 

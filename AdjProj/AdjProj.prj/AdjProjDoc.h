@@ -3,7 +3,7 @@
 
 #pragma once
 #include "CDoc.h"
-#include "XMLparser.h"
+#include "XMLstore.h"
 
 
 enum DataSource {NotePadSrc};
@@ -13,7 +13,8 @@ class AdjProjDoc : public CDoc {
 
 DataSource  dataSource;
 PathDlgDsc  dsc;
-XMLparser   xml;
+
+XMLstore    xmlStore;
 
 protected: // create from serialization only
 
@@ -21,6 +22,7 @@ protected: // create from serialization only
   DECLARE_DYNCREATE(AdjProjDoc)
 
 public:
+  virtual ~AdjProjDoc();
 
   DataSource dataSrc() {return dataSource;}
   void       display(DataSource ds);
@@ -30,21 +32,24 @@ public:
 
   virtual void serialize(Archive& ar);
 
-// Implementation
-public:
-  virtual ~AdjProjDoc();
+
+
 #ifdef _DEBUG
   virtual void AssertValid() const;
   virtual void Dump(CDumpContext& dc) const;
 #endif
+
+private:
+
+  XMLbase* onAdjust(TCchar* txt);
 
 protected:
 
   DECLARE_MESSAGE_MAP()
 
 public:
-  afx_msg void OnFileOpen();
-  afx_msg void OnAdjust();
+  afx_msg void onFileOpen();
+  afx_msg void onAdjust();
 
-  afx_msg void OnFileSave();
+  afx_msg void onFileSave();
   };

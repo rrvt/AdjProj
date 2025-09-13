@@ -36,12 +36,6 @@
     <ClInclude Include="MainFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Store.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="XMLparser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Library\Extras\OptionsDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -55,6 +49,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MyToolBar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Layers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -74,12 +71,6 @@
     <ClCompile Include="MainFrame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Store.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="XMLparser.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Library\Extras\OptionsDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -90,6 +81,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MyToolBar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Layers.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -118,6 +112,7 @@
     <None Include="res\Toolbar.bmp">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\Data\MakeApp.vcxproj" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\AdjProj.ico">
