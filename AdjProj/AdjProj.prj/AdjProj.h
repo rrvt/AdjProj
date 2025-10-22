@@ -38,7 +38,7 @@ String version;
 
 extern AdjProj theApp;
 
-inline void          invalidate() { theApp.invalidate();}
+
 inline AdjProjDoc*   doc() { return theApp.doc();}
 inline AdjProjView*  view() {return theApp.view();}
 

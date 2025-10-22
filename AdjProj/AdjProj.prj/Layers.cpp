@@ -2,6 +2,7 @@
 
 #include "pch.h"
 #include "Layers.h"
+#include "NotePad.h"
 
 
 LayerBase::~LayerBase() { }

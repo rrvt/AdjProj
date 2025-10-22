@@ -21,6 +21,10 @@ Copy an vcxproj file into the data directory and practice with it.
 
 ## Updates
 
+### Update 10/22/25
+
+Factored library into three parts, Library, Dialog, DocView.
+
 ### Updaate 9/13/25
 
 Update XMLibrary to be compatible with new ExpandableP.
