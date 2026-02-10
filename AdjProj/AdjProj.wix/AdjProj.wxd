@@ -6,7 +6,7 @@ Version=2.100000
 [DefaultPath]
 NPaths=4
 DefKey0=Main.ftr
-Main.ftr.Path=D:\Sources\AdjProj\Release\
+Main.ftr.Path=D:\Sources\AdjProj\Release.Win32\
 DefKey1=Icon
 Icon.Path=D:\Sources\Library\License\
 DefKey2=License
@@ -31,12 +31,15 @@ IconPath=D:\Sources\Library\License\MITLicense.ico
 ProductName=Adjust VS Project File
 Company=Bob -- K6RWY
 WixName=AdjProj
-WixVersion=1.2.3.0
+WixVersion=1.3.1.0
 UpgradeCode=EA4C65D3-11DC-4DE0-A8D0-78C49E2CC1C6
 SaveVerAllowed=0
 LicenseRequired=1
 LicensePath=D:\Sources\Library\License\MITLicenseFile.rtf
 IconID=Uninstall
+IsWin10=0
+IsWin7=0
+IsWinXP=0
 [PFFDirectories]
 NoDirectories=2
 [PFFDirDesc00]
@@ -70,7 +73,7 @@ CurSel=Adjust VS Project
 NoComponents=2
 [Ftr00Cmp00]
 ID=Adjust VS Project
-Path=D:\Sources\AdjProj\Release\AdjProj.exe
+Path=D:\Sources\AdjProj\Release.Win32\AdjProj.exe
 Guid=F136A420-01AD-4974-BFBD-C30742F18ADF
 Description=Adjust VS17 Project File
 IconID=AdjProj
@@ -79,7 +82,7 @@ IsDeskTop=1
 IsVersionAvail=1
 [Ftr00Cmp01]
 ID=Help
-Path=D:\Sources\AdjProj\Release\AdjProj.chm
+Path=D:\Sources\AdjProj\Release.Win32\AdjProj.chm
 Guid=3A3068B1-C4BD-4134-88B2-3993D49FFFAB
 [Ftr01]
 FeatureID=License

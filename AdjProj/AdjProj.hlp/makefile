@@ -10,29 +10,15 @@ Clean.cln    :
   if exist AdjProj.chm del /F AdjProj.chm
 
 
-Release/AdjProj.chm : AdjProj.chm
-  copy $(MAKEDIR)\AdjProj.chm  $(MAKEDIR)\..\Release\AdjProj.chm
+$(TgtFolder)/AdjProj.chm : AdjProj.chm
+  copy $(MAKEDIR)\AdjProj.chm  $(MAKEDIR)\..\$(TgtFolder)\AdjProj.chm
 
 
-Release/Clean.cln    : Clean.cln
-  cd $(MAKEDIR)\..\Release
+$(TgtFolder)/Clean.cln    : Clean.cln
+  cd $(MAKEDIR)\..\$(TgtFolder)
   if exist AdjProj.chm del /F AdjProj.chm
   cd $(MAKEDIR)
 
 
-Debug/AdjProj.chm : AdjProj.chm
-  copy $(MAKEDIR)\AdjProj.chm  $(MAKEDIR)\..\Debug\AdjProj.chm
-
-
-Debug/Clean.cln    : Clean.cln
-  cd $(MAKEDIR)\..\Debug
-  if exist AdjProj.chm del /F AdjProj.chm
-  cd $(MAKEDIR)
-
-
-Release/Rebuild.rbd : Release/Clean.cln Release/AdjProj.chm
-
-
-Debug/Rebuild.rbd   : Debug/Clean.cln Debug/AdjProj.chm
-
+$(TgtFolder)/Rebuild.rbd : $(TgtFolder)/Clean.cln $(TgtFolder)/AdjProj.chm
 

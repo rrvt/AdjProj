@@ -3,6 +3,7 @@
 
 #pragma once
 #include "CDoc.h"
+#include "PathDlgDsc.h"
 #include "XMLstore.h"
 
 
