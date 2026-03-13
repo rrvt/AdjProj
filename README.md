@@ -30,7 +30,8 @@ copied into the Release directory.  I used Dreamweaver (DW) to do most of the co
 help files that the HTML Help Workshop produces (i.e. HHW is used to produce the pages/files needed
 and DW is used to fill in the content).
 
-The Installer requires the Wix, HeatWave and NuGet-Tools Extensions to VS22
+The Installer requires the Wix, HeatWave and NuGet-Tools Extensions to VS22.  WixApp (one of my
+applications, see git) was used to produce the product.wxs file.
 
 ### Prerequisites
 
@@ -46,6 +47,10 @@ The ...msi file will install the application.
 Copy an vcxproj file into the data directory and practice with it.
 
 ## Updates
+
+### Update 3/13/26
+
+Added x64 platform.  Lots of changes in the library.
 
 ### Update 2/10/26
 
